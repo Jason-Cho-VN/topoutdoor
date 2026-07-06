@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.O.P Outdoor Vina - Premium Outdoor Manufacturing</title>
+    <style>
+        /* 기본 디자인 스타일 */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        body { color: #333; line-height: 1.6; background-color: #fff; }
+        a { text-decoration: none; color: inherit; }
+        
+        /* 고정 헤더 네비게이션 */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 22px; font-weight: 800; color: #1a252f; letter-spacing: 0.5px; }
+        .logo span { color: #e74c3c; }
+        nav a { margin-left: 25px; font-weight: 600; font-size: 15px; color: #555; transition: color 0.3s; }
+        nav a:hover { color: #e74c3c; }
+        .lang-btn { background: #1a252f; color: #fff; border: none; padding: 7px 14px; cursor: pointer; border-radius: 4px; font-size: 13px; margin-left: 25px; font-weight: bold; transition: background 0.3s; }
+        .lang-btn:hover { background: #e74c3c; }
+
+        /* 구글 드라이브 직링크 이미지 메인 배경 적용 */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://lh3.googleusercontent.com/d/1YneriptIotPsEjT3uU2awbcm_uNJyki2') no-repeat center center/cover; 
+            height: 70vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            color: #fff; 
+            text-align: center; 
+            padding: 0 20px; 
+        }
+        .hero h1 { font-size: 52px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
+        .hero p { font-size: 22px; max-width: 800px; font-weight: 300; color: #f8f9fa; }
+
+        /* 공통 섹션 레이아웃 */
+        section { padding: 90px 10%; text-align: center; }
+        section h2 { font-size: 34px; margin-bottom: 15px; color: #1a252f; font-weight: 700; }
+        .section-desc { font-size: 16px; color: #777; margin-bottom: 60px; }
+        section h2::after { content: ''; display: block; width: 40px; height: 3px; background: #e74c3c; margin: 15px auto 0; }
+
+        /* 1. 회사 상세 소개 (About Us) */
+        .about-container { display: flex; align-items: center; gap: 50px; text-align: left; }
+        .about-text { flex: 1; }
+        .about-text h3 { font-size: 24px; margin-bottom: 15px; color: #2c3e50; }
+        .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; }
+        .parent-info { background: #f8f9fa; border-left: 4px solid #e74c3c; padding: 20px; margin-top: 30px; }
+        .about-img { flex: 1; height: 350px; background: url('https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover; border-radius: 8px; }
+
+        /* 2. 제품 포트폴리오 및 인프라 공통 그리드 (3개 단위 배치) */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
+        .prod-card { background: #fff; border: 1px solid #eee; border-radius: 6px; overflow: hidden; text-align: left; transition: transform 0.3s, box-shadow 0.3s; }
+        .prod-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        
+        /* 슬라이더 수용용 컨테이너 스타일 */
+        .prod-slider-container { position: relative; height: 220px; width: 100%; overflow: hidden; background-color: #ddd; }
+        .prod-slider-track { display: flex; height: 100%; width: 100%; transition: transform 0.4s ease-in-out; }
+        .prod-slider-slide { flex-shrink: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
+        
+        /* 슬라이더 좌우 조작 버튼 */
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.4); color: #fff; border: none; width: 34px; height: 34px; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; border-radius: 50%; z-index: 5; transition: background 0.3s; user-select: none; }
+        .slider-btn:hover { background: #e74c3c; }
+        .btn-prev { left: 10px; }
+        .btn-next { right: 10px; }
+        
+        .prod-info { padding: 20px; }
+        .prod-info h4 { font-size: 18px; margin-bottom: 10px; color: #1a252f; }
+        .prod-info p { font-size: 14px; color: #666; }
+
+        /* 3. 인프라 및 설비 (Infrastructure) */
+        .infra-bg { background-color: #f9fbfd; }
+        .infra-card { background: #fff; padding: 40px 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-top: 3px solid #34495e; text-align: left; }
+        .infra-card h4 { font-size: 20px; margin-bottom: 15px; color: #2c3e50; }
+        .infra-card p { font-size: 15px; color: #666; }
+
+        /* 4. 문의 양식 (Contact Us) */
+        .contact-wrapper { display: flex; gap: 50px; text-align: left; }
+        .contact-info { flex: 1; }
+        .contact-info p { margin-bottom: 15px; font-size: 16px; }
+        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+        .contact-form input, .contact-form textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        .contact-form button { background: #e74c3c; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; transition: background 0.3s; }
+        .contact-form button:hover { background: #c0392b; }
+
+        /* 5. 파트너사 무한 끊김 없는 슬라이더 스타일 */
+        .partners-section {
+            background: #fff;
+            padding: 80px 0;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            clear: both;
+        }
+        .logo-slider {
+            position: relative;
+            width: 100%;
+            margin-top: 40px;
+            overflow: hidden;
+            padding: 15px 0;
+        }
+        /* 좌우 은은한 투명 그라데이션 가림막 */
+        .logo-slider::before,
+        .logo-slider::after {
+            content: "";
+            height: 100%;
+            position: absolute;
+            width: 150px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .logo-slider::before { left: 0; top: 0; background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); }
+        .logo-slider::after { right: 0; top: 0; background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); }
+
+        /* 무한 흐름을 보장하는 Flex 구조 및 끊김 없는 애니메이션 */
+        .logo-track {
+            display: flex;
+            width: max-content;
+            animation: infiniteScroll 35s linear infinite;
+        }
+        .slide {
+            flex-shrink: 0;
+            width: 240px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 25px;
+        }
+        /* [정밀 가시성 패치] 얇은 텍스트 로고 찌그러짐 방지 및 벌크업 세팅 */
+        .slide img {
+            width: auto;
+            height: auto;
+            max-width: 170px;
+            max-height: 60px;
+            min-width: 140px;
+            min-height: 45px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            transform: scale(1.05);
+        }
+        .slide img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* 끊김 없는 롤링 애니메이션 */
+        @keyframes infiniteScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* 푸터 영역 */
+        footer { background: #1a252f; color: #fff; padding: 50px 10%; font-size: 14px; border-top: 5px solid #e74c3c; position: relative; z-index: 10; }
+        .footer-cols { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+        .footer-col h5 { font-size: 16px; margin-bottom: 15px; color: #f8f9fa; }
+        .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid #2c3e50; text-align: center; color: #7f8c8d; }
+        
+        /* 다국어 제어 클래스 */
+        .lang-ko .en, .lang-en .ko { display: none; }
+
+        /* 반응형 디자인 */
+        @media (max-width: 992px) {
+            .about-container, .contact-wrapper { flex-direction: column; }
+            .about-img { height: 250px; }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+            .hero h1 { font-size: 34px; }
+            .hero p { font-size: 16px; }
+        }
+    </style>
+</head>
+<body class="lang-en"> <header>
+        <div class="logo">T.O.P Outdoor <span>Vina</span></div>
+        <nav>
+            <a href="#about" class="ko">회사소개</a><a href="#about" class="en">About Us</a>
+            <a href="#products" class="ko">제품안내</a><a href="#products" class="en">Products</a>
+            <a href="#infrastructure" class="ko">생산설비</a><a href="#infrastructure" class="en">Infrastructure</a>
+            <a href="#contact" class="ko">비즈니스 문의</a><a href="#contact" class="en">Contact</a>
+            <button class="lang-btn" onclick="toggleLanguage()">KO / EN</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="ko">글로벌 아웃도어를 리드하는 제조 파트너</h1>
+        <h1 class="en">Your Global Outdoor Manufacturing Partner</h1>
+        <p class="ko">모회사 ES큐브의 축적된 기술력을 바탕으로 최고의 레저용 텐트를 공급합니다.</p>
+        <p class="en">Delivering world-class leisure tents backed by the proven technology of our parent company, ES CUBE.</p>
+    </section>
+
+    <section id="about">
+        <h2 class="ko">회사 개요</h2><h2 class="en">Company Overview</h2>
+        <p class="section-desc ko">최고의 품질과 신뢰로 글로벌 시장을 연결합니다.</p>
+        <p class="section-desc en">Connecting global markets with top-tier quality and trust.</p>
+        
+        <div class="about-container">
+            <div class="about-text">
+                <h3 class="ko">최고의 기술력과 대규모 생산 능력</h3>
+                <h3 class="en">Top Technical Excellence & Scalable CAPA</h3>
+                <p class="ko">T.O.P Outdoor Vina는 2016년 베트남 빈증성에 설립된 아웃도어 제조 전문 기업입니다. 숙련된 현지 인력과 체계적인 한국식 품질 관리 시스템을 융합하여 글로벌 유수 브랜드들의 핵심 생산 기지 역할을 수행하고 있습니다.</p>
+                <p class="en">Established in 2016 in Binh Duong Province, Vietnam, T.O.P Outdoor Vina specializes in outdoor gear manufacturing. By combining a highly skilled local workforce with systematic Korean quality control, we serve as a core production hub for leading global brands.</p>
+                
+                <div class="parent-info">
+                    <p class="ko"><strong>모회사 시너지:</strong> 한국 코스닥 상장사인 <strong>(주)ES큐브(www.escube.co.kr)</strong>의 텐트 및 아웃도어 전문 기술 표준을 그대로 적용하여 완벽한 신뢰성을 보장합니다.</p>
+                    <p class="en"><strong>Parent Company Synergy:</strong> We ensure absolute product reliability by strictly implementing the engineering standards of <strong>ES CUBE Co., Ltd. (www.escube.co.kr)</strong>, a KOSDAQ-listed company in South Korea.</p>
+                </div>
+            </div>
+            <div class="about-img"></div>
+        </div>
+    </section>
+
+    <section id="products" style="border-top: 1px solid #eee;">
+        <h2 class="ko">주요 제품 라인업</h2><h2 class="en">Our Product Lines</h2>
+        <p class="section-desc ko">엄격한 공정 관리를 통해 탄생한 완벽한 아웃도어 기어</p>
+        <p class="section-desc en">Flawless outdoor gear crafted through rigorous process control</p>
+        
+        <div class="grid-3">
+            <div class="prod-card">
+                <div class="prod-slider-container">
+                    <button class="slider-btn btn-prev" onclick="moveSlider(this, -1)">‹</button>
+                    <div class="prod-slider-track">
+                        <div class="prod-slider-slide" style="background-image: url('https://lh3.googleusercontent.com/d/1FFX9ol0DT9L3bRnUQt5qtezTWdwtsF6L');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://lh3.googleusercontent.com/d/1KkbTWLrT3WCqxaiENMaSRWreGMbfligf');"></div>
+                    </div>
+                    <button class="slider-btn btn-next" onclick="moveSlider(this, 1)">›</button>
+                </div>
+                <div class="prod-info">
+                    <h4 class="ko">가족용 캠핑 텐트</h4><h4 class="en">Family Camping Tents</h4>
+                    <p class="ko">넓은 공간감과 거주성을 극대화한 거실형 텐트 및 돔 텐트 라인업입니다.</p>
+                    <p class="en">Spacious and high-comfort living-room tents and dome tents for family camping.</p>
+                </div>
+            </div>
+
+            <div class="prod-card">
+                <div class="prod-slider-container">
+                    <button class="slider-btn btn-prev" onclick="moveSlider(this, -1)">‹</button>
+                    <div class="prod-slider-track">
+                        <div class="prod-slider-slide" style="background-image: url('https://lh3.googleusercontent.com/d/1DOMMOWuRAG5KozAFv_JMCz6Mqhh7cWwH');"></div>
+                    </div>
+                    <button class="slider-btn btn-next" onclick="moveSlider(this, 1)">›</button>
+                </div>
+                <div class="prod-info">
+                    <h4 class="ko">전문가용 알파인 텐트</h4><h4 class="en">Alpine & Backpacking</h4>
+                    <p class="ko">경량화와 거친 환경에서의 내구성을 초점에 둔 백패킹 전문가용 제품입니다.</p>
+                    <p class="en">Ultra-lightweight and durable structures engineered for harsh weather conditions.</p>
+                </div>
+            </div>
+
+            <div class="prod-card">
+                <div class="prod-slider-container">
+                    <button class="slider-btn btn-prev" onclick="moveSlider(this, -1)">‹</button>
+                    <div class="prod-slider-track">
+                        <div class="prod-slider-slide" style="background-image: url('https://lh3.googleusercontent.com/d/1X5MrfqLWjTEiVw1pdkJWVnNqQwAI3U6o');"></div>
+                    </div>
+                    <button class="slider-btn btn-next" onclick="moveSlider(this, 1)">›</button>
+                </div>
+                <div class="prod-info">
+                    <h4 class="ko">레저용 그늘막 / 타프</h4><h4 class="en">Leisure Tarps & Sunshades</h4>
+                    <p class="ko">우수한 자외선 차단 및 방수 성능을 갖춘 야외 활동용 그늘막 제품군입니다.</p>
+                    <p class="en">Premium UV protection and high-waterproof performance for all outdoor events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="infrastructure" class="infra-bg">
+        <h2 class="ko">생산 인프라 및 핵심 역량</h2><h2 class="en">Manufacturing Infrastructure</h2>
+        <p class="section-desc ko">글로벌 스탠다드를 충족하는 체계적인 베트남 현지 공장 인프라</p>
+        <p class="section-desc en">Vietnam factory infrastructure optimized to satisfy global industry standards</p>
+        
+        <div class="grid-3">
+            <div class="infra-card">
+                <h4 class="ko">고정밀 제조 장비</h4><h4 class="en">High-Precision Equipment</h4>
+                <p class="ko">자동 원단 재단기 및 첨단 고주파 심실링(Seam-sealing) 머신을 가동하여 비바람을 완벽히 차단하는 무결점 텐트를 생산합니다.</p>
+                <p class="en">Operating automatic fabric cutters and advanced seam-sealing machines to manufacture flawless, weatherproof tents.</p>
+            </div>
+            <div class="infra-card">
+                <h4 class="ko">글로벌 퀄리티 컨트롤</h4><h4 class="en">Rigorous Quality Audit</h4>
+                <p class="ko">원사 인장 강도 테스트부터 최종 패킹 전 전수 피칭(Tent Pitching) 검사까지 단계별 품질 검증 프로세스를 통과합니다.</p>
+                <p class="en">From fabric tensile strength testing to full tent pitching audits before final packing, quality is ensured at every stage.</p>
+            </div>
+            <div class="infra-card">
+                <h4 class="ko">전략적 물류 거점</h4><h4 class="en">Strategic Export Logistics</h4>
+                <p class="ko">베트남 남부 물류 중심지인 빈증성 바우방 산업단지에 위치하여 호치민 항구를 통한 북미, 유럽, 한국 등으로의 신속한 해상 수출이 가능합니다.</p>
+                <p class="en">Located in Bau Bang IP, Binh Duong Province—the logistics hub of Southern Vietnam—enabling fast shipping to the US, Europe, and Korea.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="ko">비즈니스 문의</h2><h2 class="en">Contact For Inquiry</h2>
+        <p class="section-desc ko">글로벌 소싱 및 생산 파트너십 제안을 환영합니다.</p>
+        <p class="section-desc en">We welcome your global sourcing and production partnership inquiries.</p>
+        
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3 style="margin-bottom: 20px; color: #1a252f;">T.O.P OUTDOOR VINA CO., LTD.</h3>
+                <p><strong>📍 <span class="ko">공장 주소</span><span class="en">Factory Address</span>:</strong><br>
+                Lot A-6A2-CN, Bau Bang Industrial Park, Lai Uyen Town, Bau Bang District, Binh Duong Province, Vietnam</p>
+                <p><strong>📞 Tel:</strong> +84 (0)274 3803 709</p>
+                <p><strong>✉️ Email:</strong> sales@topoutdoorvina.com</p>
+            </div>
+            <form class="contact-form" onsubmit="alert('Thank you for your message. We will contact you soon.'); return false;">
+                <input type="text" placeholder="Company Name / 회사명" required>
+                <input type="email" placeholder="Email Address / 이메일 주소" required>
+                <textarea rows="5" placeholder="Inquiry Details / 문의 내용 (e.g., Target Quantity, Specs)" required></textarea>
+                <button type="submit"><span class="ko">문의 보내기</span><span class="en">Submit Inquiry</span></button>
+            </form>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <h2 class="ko">주요 파트너사</h2><h2 class="en">Our Partners</h2>
+        <div class="logo-slider">
+            <div class="logo-track">
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1ij1I37PqV6GefdcvhbEmdUxYuwIjV3zr" alt="Partner 1"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1szVm7pxau_S2v1h31sM5ZGqQ1zE-W1sx" alt="Partner 2"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1Jp19zXIfv3FkE3AsptIai7vWV0ojuoVp" alt="Partner 3"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1gGNmW94fHP5XmiV8OIH1_eiyzjJ5EBM3" alt="Partner 4"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/18a8t2wdhTT1zCHEAqxCOsPymiA8QHvY6" alt="Partner 5"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1D1JBsJHZ1LSmgihhY0SkLxHSQrtRfbMQ" alt="Partner 6"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1layzsYSQCDbCv3gpsR3geBZINwfayLL0" alt="Partner 7"></div>
+                
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1ij1I37PqV6GefdcvhbEmdUxYuwIjV3zr" alt="Partner 1"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1szVm7pxau_S2v1h31sM5ZGqQ1zE-W1sx" alt="Partner 2"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1Jp19zXIfv3FkE3AsptIai7vWV0ojuoVp" alt="Partner 3"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1gGNmW94fHP5XmiV8OIH1_eiyzjJ5EBM3" alt="Partner 4"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/18a8t2wdhTT1zCHEAqxCOsPymiA8QHvY6" alt="Partner 5"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1D1JBsJHZ1LSmgihhY0SkLxHSQrtRfbMQ" alt="Partner 6"></div>
+                <div class="slide"><img src="https://lh3.googleusercontent.com/d/1layzsYSQCDbCv3gpsR3geBZINwfayLL0" alt="Partner 7"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h5>T.O.P Outdoor Vina</h5>
+                <p style="color: #95a5a6; max-width: 300px;">
+                    <span class="ko">글로벌 아웃도어 시장의 든든한 생산 기지로서 최고의 가치를 제공합니다.</span>
+                    <span class="en">Providing supreme manufacturing value as your reliable outdoor production base.</span>
+                </p>
+            </div>
+            <div class="footer-col">
+                <h5>Parent Company</h5>
+                <p><a href="http://www.escube.co.kr" target="_blank" style="color: #e74c3c; font-weight: bold;">ES CUBE Co., Ltd. 🌐</a></p>
+                <p style="color: #95a5a6; margin-top: 5px;">KOSDAQ: 050120</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 T.O.P Outdoor Vina Co., Ltd. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // 다국어 언어 전환 기능
+        function toggleLanguage() {
+            const body = document.body;
+            if (body.classList.contains('lang-en')) {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-ko');
+            } else {
+                body.classList.remove('lang-ko');
+                body.classList.add('lang-en');
+            }
+        }
+
+        // 제품별 이미지 슬라이더 조작 기능
+        function moveSlider(button, direction) {
+            const container = button.parentElement;
+            const track = container.querySelector('.prod-slider-track');
+            const slides = track.querySelectorAll('.prod-slider-slide');
+            const slideCount = slides.length;
+            
+            let currentIndex = parseInt(track.getAttribute('data-index') || '0');
+            
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = slideCount - 1;
+            } else if (currentIndex >= slideCount) {
+                currentIndex = 0;
+            }
+            
+            track.setAttribute('data-index', currentIndex);
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
+</body>
+</html>
