@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,12 +14,17 @@
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
         .logo { font-size: 22px; font-weight: 800; color: #1a252f; letter-spacing: 0.5px; }
         .logo span { color: #e74c3c; }
+        nav { display: flex; align-items: center; }
         nav a { margin-left: 25px; font-weight: 600; font-size: 15px; color: #555; transition: color 0.3s; }
         nav a:hover { color: #e74c3c; }
-        .lang-btn { background: #1a252f; color: #fff; border: none; padding: 7px 14px; cursor: pointer; border-radius: 4px; font-size: 13px; margin-left: 25px; font-weight: bold; transition: background 0.3s; }
-        .lang-btn:hover { background: #e74c3c; }
 
-        /* [수정 완료] 메인 비주얼 배경 지정 */
+        /* 3개국어 개편 언어 선택 버튼 스타일 */
+        .lang-switch { display: flex; gap: 5px; margin-left: 25px; }
+        .lang-switch button { background: #f1f2f6; color: #333; border: 1px solid #ddd; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-size: 12px; font-weight: bold; transition: all 0.3s; }
+        .lang-switch button.active { background: #1a252f; color: #fff; border-color: #1a252f; }
+        .lang-switch button:hover { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+
+        /* 메인 비주얼 배경 지정 */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://i.ibb.co/KpjXhXgv/main-page-2.jpg') no-repeat center center/cover; 
             height: 70vh; 
@@ -46,7 +51,6 @@
         .about-text h3 { font-size: 24px; margin-bottom: 15px; color: #2c3e50; }
         .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; }
         .parent-info { background: #f8f9fa; border-left: 4px solid #e74c3c; padding: 20px; margin-top: 30px; }
-        /* [수정 완료] 회사 전경 서브 이미지 매칭 */
         .about-img { flex: 1; height: 350px; background: url('https://i.ibb.co/MxVVjdzy/factory-outline.jpg') no-repeat center center/cover; border-radius: 8px; }
 
         /* 2. 제품 포트폴리오 3열 그리드 */
@@ -56,14 +60,12 @@
         
         .prod-slider-container { position: relative; height: 220px; width: 100%; overflow: hidden; background-color: #ddd; }
         .prod-slider-track { display: flex; height: 100%; width: 100%; transition: transform 0.4s ease-in-out; }
-        /* 슬라이드 이미지 한 장 한 장이 찌그러지지 않고 꽉 차게 고정하는 스타일 */
-       .prod-slider-slide {
+        .prod-slider-slide {
             flex-shrink: 0;
             width: 100%;
             height: 100%;
-            /* [중요] 늘어남 현상을 해결하는 핵심 3줄 스위치 */
-            background-size: cover;       /* 사진 비율을 강제로 깨뜨리지 않고 칸에 맞춤 */
-            background-position: center;   /* 이미지가 잘릴 때 항상 정중앙을 기준으로 맞춤 */
+            background-size: cover;       
+            background-position: center;   
             background-repeat: no-repeat;
         }
         
@@ -78,9 +80,12 @@
 
         /* 3. 인프라 및 설비 (Infrastructure) */
         .infra-bg { background-color: #f9fbfd; }
-        .infra-card { background: #fff; padding: 40px 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-top: 3px solid #34495e; text-align: left; }
+        .infra-card { background: #fff; padding: 40px 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-top: 3px solid #34495e; text-align: left; margin-bottom: 25px; }
         .infra-card h4 { font-size: 20px; margin-bottom: 15px; color: #2c3e50; }
         .infra-card p { font-size: 15px; color: #666; }
+        .infra-card h3 { font-size: 22px; margin-bottom: 15px; color: #2c3e50; }
+        .infra-list { padding-left: 20px; }
+        .infra-list li { margin-bottom: 10px; color: #555; font-size: 15px; }
 
         /* 4. 문의 양식 (Contact Us) */
         .contact-wrapper { display: flex; gap: 50px; text-align: left; }
@@ -91,7 +96,7 @@
         .contact-form button { background: #e74c3c; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; transition: background 0.3s; }
         .contact-form button:hover { background: #c0392b; }
 
-        /* 5. 파트너사 무한 끊김 없는 슬라이더 스타일 */
+        /* 5. 파트너사 슬라이더 스타일 */
         .partners-section { background: #fff; padding: 80px 0; overflow: hidden; width: 100%; position: relative; clear: both; }
         .logo-slider { position: relative; width: 100%; margin-top: 40px; overflow: hidden; padding: 15px 0; }
         .logo-slider::before, .logo-slider::after { content: ""; height: 100%; position: absolute; width: 150px; z-index: 2; pointer-events: none; }
@@ -100,8 +105,6 @@
 
         .logo-track { display: flex; width: max-content; animation: infiniteScroll 35s linear infinite; }
         .slide { flex-shrink: 0; width: 240px; height: 70px; display: flex; justify-content: center; align-items: center; padding: 0 25px; }
-        
-        /* [가시성 보정 완본] 글자형 로고 크기 밸런싱 세팅 */
         .slide img {
             width: auto; height: auto;
             max-width: 170px; max-height: 60px;
@@ -120,49 +123,73 @@
         .footer-col h5 { font-size: 16px; margin-bottom: 15px; color: #f8f9fa; }
         .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid #2c3e50; text-align: center; color: #7f8c8d; }
         
-        /* 다국어 제어 클래스 */
-        .lang-ko .en, .lang-en .ko { display: none; }
+        /* [3개국어 핵심제어 엔진] 멀티 링구얼 라벨 규칙 정리 */
+        body.lang-ko .ko { display: block; }
+        body.lang-ko .en, body.lang-ko .vi { display: none; }
+        body.lang-ko ul.infra-list.ko { display: block; }
+        body.lang-ko ul.infra-list.en, body.lang-ko ul.infra-list.vi { display: none; }
+
+        body.lang-en .en { display: block; }
+        body.lang-en .ko, body.lang-en .vi { display: none; }
+        body.lang-en ul.infra-list.en { display: block; }
+        body.lang-en ul.infra-list.ko, body.lang-en ul.infra-list.vi { display: none; }
+
+        body.lang-vi .vi { display: block; }
+        body.lang-vi .ko, body.lang-vi .en { display: none; }
+        body.lang-vi ul.infra-list.vi { display: block; }
+        body.lang-vi ul.infra-list.ko, body.lang-vi ul.infra-list.en { display: none; }
 
         /* 반응형 디자인 */
         @media (max-width: 992px) { .about-container, .contact-wrapper { flex-direction: column; } .about-img { height: 250px; } }
-        @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } nav a { margin: 0 10px; } .hero h1 { font-size: 34px; } .hero p { font-size: 16px; } }
+        @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } nav { flex-direction: column; gap: 10px; } nav a { margin: 0 10px; } .lang-switch { margin-left: 0; margin-top: 5px; } .hero h1 { font-size: 34px; } .hero p { font-size: 16px; } }
     </style>
 </head>
-<body class="lang-en">
-
-    <header>
+<body class="lang-ko"> <header>
         <div class="logo">T.O.P Outdoor <span>Vina</span></div>
         <nav>
-            <a href="#about" class="ko">회사소개</a><a href="#about" class="en">About Us</a>
-            <a href="#products" class="ko">제품안내</a><a href="#products" class="en">Products</a>
-            <a href="#infrastructure" class="ko">생산설비</a><a href="#infrastructure" class="en">Infrastructure</a>
-            <a href="#contact" class="ko">비즈니스 문의</a><a href="#contact" class="en">Contact</a>
-            <button class="lang-btn" onclick="toggleLanguage()">KO / EN</button>
+            <a href="#about" class="ko">회사소개</a><a href="#about" class="en">About Us</a><a href="#about" class="vi">Giới Thiệu</a>
+            <a href="#products" class="ko">제품안내</a><a href="#products" class="en">Products</a><a href="#products" class="vi">Sản Phẩm</a>
+            <a href="#infrastructure" class="ko">생산설비</a><a href="#infrastructure" class="en">Infrastructure</a><a href="#infrastructure" class="vi">Cơ Sở Hạ Tầng</a>
+            <a href="#contact" class="ko">비즈니스 문의</a><a href="#contact" class="en">Contact</a><a href="#contact" class="vi">Liên Hệ</a>
+            
+            <div class="lang-switch">
+                <button onclick="setLanguage('ko')" id="btn-ko" class="active">KO</button>
+                <button onclick="setLanguage('en')" id="btn-en">EN</button>
+                <button onclick="setLanguage('vi')" id="btn-vi">VI</button>
+            </div>
         </nav>
     </header>
 
     <section class="hero">
         <h1 class="ko">글로벌 아웃도어를 리드하는 제조 파트너</h1>
         <h1 class="en">Your Global Outdoor Manufacturing Partner</h1>
+        <h1 class="vi">Đối Tác Sản Xuất Thiết Bị Ngoài Trời Toàn Cầu</h1>
+        
         <p class="ko">모회사 ES큐브의 축적된 기술력을 바탕으로 최고의 레저용 텐트를 공급합니다.</p>
         <p class="en">Delivering world-class leisure tents backed by the proven technology of our parent company, ES CUBE.</p>
+        <p class="vi">Cung cấp các loại lều trại giải trí chất lượng hàng đầu dựa trên nền tảng công nghệ của công ty mẹ ES CUBE.</p>
     </section>
 
     <section id="about">
-        <h2 class="ko">회사 개요</h2><h2 class="en">Company Overview</h2>
+        <h2 class="ko">회사 개요</h2><h2 class="en">Company Overview</h2><h2 class="vi">Tổng Quan Công Ty</h2>
         <p class="section-desc ko">최고의 품질과 신뢰로 글로벌 시장을 연결합니다.</p>
         <p class="section-desc en">Connecting global markets with top-tier quality and trust.</p>
+        <p class="section-desc vi">Kết nối thị trường toàn cầu bằng chất lượng hàng đầu và sự tin cậy.</p>
         
         <div class="about-container">
             <div class="about-text">
                 <h3 class="ko">최고의 기술력과 대규모 생산 능력</h3>
                 <h3 class="en">Top Technical Excellence & Scalable CAPA</h3>
+                <h3 class="vi">Kỹ Thuật Xuất Sắc & Năng Lực Sản Xuất Lớn</h3>
+                
                 <p class="ko">T.O.P Outdoor Vina는 2016년 베트남 빈증성에 설립된 아웃도어 제조 전문 기업입니다. 숙련된 현지 인력과 체계적인 한국식 품질 관리 시스템을 융합하여 글로벌 유수 브랜드들의 핵심 생산 기지 역할을 수행하고 있습니다.</p>
                 <p class="en">Established in 2016 in Binh Duong Province, Vietnam, T.O.P Outdoor Vina specializes in outdoor gear manufacturing. By combining a highly skilled local workforce with systematic Korean quality control, we serve as a core production hub for leading global brands.</p>
+                <p class="vi">Được thành lập vào năm 2016 tại tỉnh Bình Dương, Việt Nam, T.O.P Outdoor Vina là doanh nghiệp chuyên sản xuất thiết bị dã ngoại ngoài trời. Bằng cách kết hợp đội ngũ nhân lực địa phương lành nghề với hệ thống kiểm soát chất lượng chuẩn Hàn Quốc, chúng tôi đóng vai trò là trung tâm sản xuất cốt lõi cho các thương hiệu hàng đầu thế giới.</p>
                 
                 <div class="parent-info">
                     <p class="ko"><strong>모회사 시너지:</strong> 한국 코스닥 상장사인 <strong>(주)ES큐브(www.escube.co.kr)</strong>의 텐트 및 아웃도어 전문 기술 표준을 그대로 적용하여 완벽한 신뢰성을 보장합니다.</p>
                     <p class="en"><strong>Parent Company Synergy:</strong> We ensure absolute product reliability by strictly implementing the engineering standards of <strong>ES CUBE Co., Ltd. (www.escube.co.kr)</strong>, a KOSDAQ-listed company in South Korea.</p>
+                    <p class="vi"><strong>Hợp lực cùng Công ty mẹ:</strong> Chúng tôi đảm bảo độ tin cậy tuyệt đối của sản phẩm bằng cách áp dụng nghiêm ngặt các tiêu chuẩn kỹ thuật chuyên nghiệp về lều và thiết bị ngoài trời của <strong>ES CUBE Co., Ltd. (www.escube.co.kr)</strong>, một công ty niêm yết trên thị trường KOSDAQ Hàn Quốc.</p>
                 </div>
             </div>
             <div class="about-img"></div>
@@ -170,15 +197,16 @@
     </section>
 
     <section id="products" style="border-top: 1px solid #eee;">
-        <h2 class="ko">주요 제품 라인업</h2><h2 class="en">Our Product Lines</h2>
+        <h2 class="ko">주요 제품 라인업</h2><h2 class="en">Our Product Lines</h2><h2 class="vi">Danh Mục Sản Phẩm Chính</h2>
         <p class="section-desc ko">엄격한 공정 관리를 통해 탄생한 완벽한 아웃도어 기어</p>
         <p class="section-desc en">Flawless outdoor gear crafted through rigorous process control</p>
+        <p class="section-desc vi">Thiết bị ngoài trời hoàn hảo được chế tác qua quy trình kiểm soát nghiêm ngặt</p>
         
         <div class="grid-3">
             <div class="prod-card">
                 <div class="prod-slider-container">
                     <button class="slider-btn btn-prev" onclick="moveSlider(this, -1)">‹</button>
-                  <div class="prod-slider-track">
+                    <div class="prod-slider-track">
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/Bb0skpZ/family-tent-snow-peak-LNSDome.webp');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/Y7nncbPN/family-tent-snow-peak-LNSDome2.png');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/278jdcG7/family-tent-snow-peak-LNS3.png');"></div>
@@ -188,16 +216,17 @@
                     <button class="slider-btn btn-next" onclick="moveSlider(this, 1)">›</button>
                 </div>
                 <div class="prod-info">
-                    <h4 class="ko">가족용 캠핑 텐트</h4><h4 class="en">Family Camping Tents</h4>
+                    <h4 class="ko">가족용 캠핑 텐트</h4><h4 class="en">Family Camping Tents</h4><h4 class="vi">Lều Cắm Trại Gia Đình</h4>
                     <p class="ko">넓은 공간감과 거주성을 극대화한 거실형 텐트 및 돔 텐트 라인업입니다.</p>
                     <p class="en">Spacious and high-comfort living-room tents and dome tents for family camping.</p>
+                    <p class="vi">Dòng sản phẩm lều phòng khách và lều vòm tối ưu hóa không gian rộng rãi và sự tiện nghi cho gia đình.</p>
                 </div>
             </div>
 
             <div class="prod-card">
                 <div class="prod-slider-container">
                     <button class="slider-btn btn-prev" onclick="moveSlider(this, -1)">‹</button>
-                   <div class="prod-slider-track">
+                    <div class="prod-slider-track">
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/M5Kk20WL/Lightweight-tent-hogback.jpg');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/kVkFN2Ht/Lightweight-tent-meso.jpg');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/PsD0r5wX/lightweight-tent-Meso.webp');"></div>
@@ -207,16 +236,17 @@
                     <button class="slider-btn btn-next" onclick="moveSlider(this, 1)">›</button>
                 </div>
                 <div class="prod-info">
-                    <h4 class="ko">전문가용 알파인 텐트</h4><h4 class="en">Alpine & Backpacking</h4>
+                    <h4 class="ko">전문가용 알파인 텐트</h4><h4 class="en">Alpine & Backpacking</h4><h4 class="vi">Lều Alpine Chuyên Nghiệp</h4>
                     <p class="ko">경량화와 거친 환경에서의 내구성을 초점에 둔 백패킹 전문가용 제품입니다.</p>
                     <p class="en">Ultra-lightweight and durable structures engineered for harsh weather conditions.</p>
+                    <p class="vi">Sản phẩm chuyên dụng cho leo núi dã ngoại, tập trung vào trọng lượng siêu nhẹ và độ bền trong môi trường khắc nghiệt.</p>
                 </div>
             </div>
 
             <div class="prod-card">
                 <div class="prod-slider-container">
                     <button class="slider-btn btn-prev" onclick="moveSlider(this, -1)">‹</button>
-                 <div class="prod-slider-track">
+                    <div class="prod-slider-track">
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/dsK20cg6/tarp-OGW-Car.png');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/7xWdv3mh/Tarp-OGW.jpg');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/xtgvTpjB/Tarp.jpg');"></div>
@@ -224,83 +254,104 @@
                     <button class="slider-btn btn-next" onclick="moveSlider(this, 1)">›</button>
                 </div>
                 <div class="prod-info">
-                    <h4 class="ko">레저용 그늘막 / 타프</h4><h4 class="en">Leisure Tarps & Sunshades</h4>
+                    <h4 class="ko">레저용 그늘막 / 타프</h4><h4 class="en">Leisure Tarps & Sunshades</h4><h4 class="vi">Tấm Tăng / Mái Che Giải Trí</h4>
                     <p class="ko">우수한 자외선 차단 및 방수 성능을 갖춘 야외 활동용 그늘막 제품군입니다.</p>
                     <p class="en">Premium UV protection and high-waterproof performance for all outdoor events.</p>
+                    <p class="vi">Dòng sản phẩm mái che dã ngoại với khả năng chống tia cực tím xuất sắc và hiệu suất chống thấm nước cao.</p>
                 </div>
             </div>
         </div>
     </section>
 
-  <section id="infrastructure" class="infra-bg">
-    <h2 class="ko">생산 인프라 및 핵심 역량</h2>
-    <h2 class="en">Manufacturing Infrastructure</h2>
-    <p class="section-desc ko">글로벌 스탠다드를 충족하는 체계적인 베트남 현지 공장 인프라와 검증된 제조 역량</p>
-    <p class="section-desc en">Vietnam factory infrastructure optimized to satisfy global industry standards</p>
-    
-    <div class="infra-card">
-        <div class="infra-icon">⚙️</div>
-        <h3 class="lang-ko">최첨단 생산 설비</h3>
-        <h3 class="lang-en">Advanced Production Facilities</h3>
+    <section id="infrastructure" class="infra-bg">
+        <h2 class="ko">생산 인프라 및 핵심 역량</h2>
+        <h2 class="en">Manufacturing Infrastructure</h2>
+        <h2 class="vi">Cơ Sở Hạ Tầng Sản Xuất & Năng Lực Cốt Lõi</h2>
         
-        <ul class="infra-list lang-ko">
-            <li><strong>자동 원단 연단기 보유:</strong> 정밀·균일 적층 공정으로 재단 오차를 근본적으로 방지하고 생산 효율을 극대화합니다.</li>
-            <li><strong>고주파 심실링 공정:</strong> 고온·고압의 정밀 심실링 기술을 통해 텐트 봉제선의 완벽한 방수 성능을 보장합니다.</li>
-            <li><strong>엄격한 퀄리티 컨트롤:</strong> 모회사 ES큐브의 기술력을 이어받아 원단 검사부터 완제품 검수까지 철저한 B2B 품질 검증을 거칩니다.</li>
-        </ul>
+        <p class="section-desc ko">글로벌 스탠다드를 충족하는 체계적인 베트남 현지 공장 인프라와 검증된 제조 역량</p>
+        <p class="section-desc en">Vietnam factory infrastructure optimized to satisfy global industry standards</p>
+        <p class="section-desc vi">Cơ sở hạ tầng nhà máy tại Việt Nam được tối ưu hóa đáp ứng các tiêu chuẩn khắt khe toàn cầu</p>
+        
+        <div class="infra-card">
+            <div class="infra-icon">⚙️</div>
+            <h3 class="ko">최첨단 생산 설비</h3>
+            <h3 class="en">Advanced Production Facilities</h3>
+            <h3 class="vi">Thiết Bị Sản Xuất Tiên Tiến</h3>
+            
+            <ul class="infra-list ko">
+                <li><strong>자동 원단 연단기 보유:</strong> 정밀·균일 적층 공정으로 재단 오차를 근본적으로 방지하고 생산 효율을 극대화합니다.</li>
+                <li><strong>고주파 심실링 공정:</strong> 고온·고압의 정밀 심실링 기술을 통해 텐트 봉제선의 완벽한 방수 성능을 보장합니다.</li>
+                <li><strong>엄격한 퀄리티 컨트롤:</strong> 모회사 ES큐브의 기술력을 이어받아 원단 검사부터 완제품 검수까지 철저한 B2B 품질 검증을 거칩니다.</li>
+            </ul>
 
-        <ul class="infra-list lang-en">
-            <li><strong>Automatic Fabric Spreading:</strong> Ensures precise and uniform fabric layering to eliminate cutting errors and maximize production efficiency.</li>
-            <li><strong>High-Frequency Seam Sealing:</strong> Guarantees 100% flawless waterproof performance along tent seams using advanced thermal technology.</li>
-            <li><strong>Strict Quality Control:</strong> Powered by parent company ESCUBE's expertise, we implement rigorous inspections from raw materials to finished products.</li>
-        </ul>
-    </div>
-    
-    <div class="infra-card">
-        <h4 class="ko">글로벌 시장 생산 경험</h4>
-        <h4 class="en">Global Manufacturing Experience</h4>
-        <p class="ko"><strong>아시아·유럽·미주 시장 바이어 협업:</strong> 폭넓은 글로벌 주요 시장의 B2B 생산 경험을 바탕으로 세계적 수준의 까다로운 품질 기준과 제조 규격을 완벽히 충족합니다.</p>
-        <p class="en"><strong>Asia, Europe & Americas Coverage:</strong> Proven track record of collaboration with premier global buyers, consistently meeting rigorous world-class quality standards and specifications.</p>
-    </div>
-    
-    <div class="infra-card">
-        <h4 class="ko">글로벌 퀄리티 컨트롤</h4>
-        <h4 class="en">Rigorous Quality Audit</h4>
-        <p class="ko"><strong>전수 피칭(Tent Pitching) 검사:</strong> 원사 인장 강도 테스트부터 최종 패킹 전 전수 피칭 검사까지 단계별 품질 검증 프로세스를 통과합니다.</p>
-        <p class="en"><strong>100% Full Pitching Audits:</strong> From fabric tensile strength testing to full tent pitching audits before final packing, quality is ensured at every stage.</p>
-    </div>
-    
-    <div class="infra-card">
-        <h4 class="ko">전략적 물류 거점</h4>
-        <h4 class="en">Strategic Export Logistics</h4>
-        <p class="ko"><strong>해상 수출 최적화 거점:</strong> 베트남 남부 물류 중심지인 빈증성 바우방 산업단지에 위치하여 호치민 항구를 통한 북미, 유럽, 한국 등으로의 신속한 해상 수출이 가능합니다.</p>
-        <p class="en"><strong>Strategic Logistics Hub:</strong> Located in Bau Bang IP, Binh Duong Province—the logistics hub of Southern Vietnam—enabling fast shipping to the US, Europe, and Korea.</p>
-    </div>
-</section>
+            <ul class="infra-list en">
+                <li><strong>Automatic Fabric Spreading:</strong> Ensures precise and uniform fabric layering to eliminate cutting errors and maximize production efficiency.</li>
+                <li><strong>High-Frequency Seam Sealing:</strong> Guarantees 100% flawless waterproof performance along tent seams using advanced thermal technology.</li>
+                <li><strong>Strict Quality Control:</strong> Powered by parent company ESCUBE's expertise, we implement rigorous inspections from raw materials to finished products.</li>
+            </ul>
+
+            <ul class="infra-list vi">
+                <li><strong>Máy trải vải tự động:</strong> Đảm bảo các lớp vải được xếp chính xác và đồng đều, loại bỏ hoàn toàn lỗi cắt và tối đa hóa hiệu suất sản xuất.</li>
+                <li><strong>Công nghệ ép keo đường may cao tần:</strong> Đảm bảo khả năng chống thấm nước tuyệt đối 100% dọc theo các đường may của lều bằng công nghệ nhiệt độ cao tiên tiến.</li>
+                <li><strong>Kiểm soát chất lượng nghiêm ngặt:</strong> Thừa hưởng nền tảng kỹ thuật từ công ty mẹ ESCUBE, chúng tôi thực hiện kiểm tra B2B chặt chẽ từ nguyên liệu thô đến thành phẩm.</li>
+            </ul>
+        </div>
+        
+        <div class="infra-card">
+            <h4 class="ko">글로벌 시장 생산 경험</h4>
+            <h4 class="en">Global Manufacturing Experience</h4>
+            <h4 class="vi">Kinh Nghiệm Sản Xuất Toàn Cầu</h4>
+            <p class="ko"><strong>아시아·유럽·미주 시장 바이어 협업:</strong> 폭넓은 글로벌 주요 시장의 B2B 생산 경험을 바탕으로 세계적 수준의 까다로운 품질 기준과 제조 규격을 완벽히 충족합니다.</p>
+            <p class="en"><strong>Asia, Europe & Americas Coverage:</strong> Proven track record of collaboration with premier global buyers, consistently meeting rigorous world-class quality standards and specifications.</p>
+            <p class="vi"><strong>Hợp tác với đối tác Châu Á, Châu Âu & Châu Mỹ:</strong> Với kinh nghiệm sản xuất B2B phong phú tại các thị trường lớn trên thế giới, chúng tôi đáp ứng hoàn hảo các tiêu chuẩn kỹ thuật và chất lượng khắt khe nhất.</p>
+        </div>
+        
+        <div class="infra-card">
+            <h4 class="ko">글로벌 퀄리티 컨트롤</h4>
+            <h4 class="en">Rigorous Quality Audit</h4>
+            <h4 class="vi">Kiểm Soát Chất Lượng Quốc Tế</h4>
+            <p class="ko"><strong>전수 피칭(Tent Pitching) 검사:</strong> 원사 인장 강도 테스트부터 최종 패킹 전 전수 피칭 검사까지 단계별 품질 검증 프로세스를 통과합니다.</p>
+            <p class="en"><strong>100% Full Pitching Audits:</strong> From fabric tensile strength testing to full tent pitching audits before final packing, quality is ensured at every stage.</p>
+            <p class="vi"><strong>Kiểm tra dựng lều thực tế 100%:</strong> Trải qua quy trình kiểm định nghiêm ngặt từng bước, từ thử nghiệm độ bền kéo của sợi vải đến việc dựng thử toàn bộ lều kiểm tra trước khi đóng gói thành phẩm.</p>
+        </div>
+        
+        <div class="infra-card">
+            <h4 class="ko">전략적 물류 거점</h4>
+            <h4 class="en">Strategic Export Logistics</h4>
+            <h4 class="vi">Vị Trí Logistic Chiến Lược</h4>
+            <p class="ko"><strong>해상 수출 최적화 거점:</strong> 베트남 남부 물류 중심지인 빈증성 바우방 산업단지에 위치하여 호치민 항구를 통한 북미, 유럽, 한국 등으로의 신속한 해상 수출이 가능합니다.</p>
+            <p class="en"><strong>Strategic Logistics Hub:</strong> Located in Bau Bang IP, Binh Duong Province—the logistics hub of Southern Vietnam—enabling fast shipping to the US, Europe, and Korea.</p>
+            <p class="vi"><strong>Tối ưu hóa xuất khẩu đường biển:</strong> Tọa lạc tại Khu công nghiệp Bàu Bàng, tỉnh Bình Dương — trung tâm logistics của miền Nam Việt Nam — giúp xuất khẩu nhanh chóng sang Bắc Mỹ, Châu Âu và Hàn Quốc qua các cảng Hồ Chí Minh.</p>
+        </div>
+    </section>
+
     <section id="contact">
-        <h2 class="ko">비즈니스 문의</h2><h2 class="en">Contact For Inquiry</h2>
+        <h2 class="ko">비즈니스 문의</h2><h2 class="en">Contact For Inquiry</h2><h2 class="vi">Liên Hệ Tư Vấn</h2>
         <p class="section-desc ko">글로벌 소싱 및 생산 파트너십 제안을 환영합니다.</p>
         <p class="section-desc en">We welcome your global sourcing and production partnership inquiries.</p>
+        <p class="section-desc vi">Chúng tôi hoan nghênh các đề xuất hợp tác sản xuất và cung ứng toàn cầu.</p>
         
         <div class="contact-wrapper">
             <div class="contact-info">
                 <h3 style="margin-bottom: 20px; color: #1a252f;">T.O.P OUTDOOR VINA CO., LTD.</h3>
-                <p><strong>📍 <span class="ko">공장 주소</span><span class="en">Factory Address</span>:</strong><br>
-                Lot A-6A2-CN, Bau Bang Industrial Park, Bau Bang Commune, Ho Chi Minh City, Vietnam</p>
+                <p><strong>📍 <span class="ko">공장 주소</span><span class="en">Factory Address</span><span class="vi">Địa chỉ nhà máy</span>:</strong><br>
+                Lot A-6A2-CN, Bau Bang Industrial Park, Bau Bang Commune, Binh Duong Province, Vietnam</p>
                 <p><strong>📞 Tel:</strong> +84 (0)274 3803 709</p>
                 <p><strong>✉️ Email:</strong> sales@topoutdoorvina.com</p>
             </div>
             <form class="contact-form" onsubmit="alert('Thank you for your message. We will contact you soon.'); return false;">
-                <input type="text" placeholder="Company Name / 회사명" required>
-                <input type="email" placeholder="Email Address / 이메일 주소" required>
-                <textarea rows="5" placeholder="Inquiry Details / 문의 내용 (e.g., Target Quantity, Specs)" required></textarea>
-                <button type="submit"><span class="ko">문의 보내기</span><span class="en">Submit Inquiry</span></button>
+                <input type="text" placeholder="Company Name / 회사명 / Tên công ty" required>
+                <input type="email" placeholder="Email Address / 이메일 주소 / Địa chỉ email" required>
+                <textarea rows="5" placeholder="Inquiry Details / 문의 내용 / Nội dung liên hệ (e.g., Target Quantity, Specs)" required></textarea>
+                <button type="submit">
+                    <span class="ko">문의 보내기</span><span class="en">Submit Inquiry</span><span class="vi">Gửi yêu cầu</span>
+                </button>
             </form>
         </div>
     </section>
 
     <section class="partners-section">
-        <h2 class="ko">주요 파트너사</h2><h2 class="en">Our Partners</h2>
+        <h2 class="ko">주요 파트너사</h2><h2 class="en">Our Partners</h2><h2 class="vi">Đối Tác Chính</h2>
         <div class="logo-slider">
             <div class="logo-track">
                 <div class="slide"><img src="https://i.ibb.co/99Wg04LW/snow-peak.png" alt="Snow Peak"></div>
@@ -331,6 +382,7 @@
                 <p style="color: #95a5a6; max-width: 300px;">
                     <span class="ko">글로벌 아웃도어 시장의 든든한 생산 기지로서 최고의 가치를 제공합니다.</span>
                     <span class="en">Providing supreme manufacturing value as your reliable outdoor production base.</span>
+                    <span class="vi">Cung cấp giá trị sản xuất cao nhất với tư cách là cơ sở sản xuất lều trại đáng tin cậy của bạn.</span>
                 </p>
             </div>
             <div class="footer-col">
@@ -345,16 +397,26 @@
     </footer>
 
     <script>
-        // 다국어 언어 전환 기능
-        function toggleLanguage() {
-            const body = document.body;
-            if (body.classList.contains('lang-en')) {
-                body.classList.remove('lang-en');
-                body.classList.add('lang-ko');
-            } else {
-                body.classList.remove('lang-ko');
-                body.classList.add('lang-en');
-            }
+        // 3개국어 정밀 제어 엔진 스크립트
+        function setLanguage(lang) {
+            const languages = ['ko', 'en', 'vi'];
+            
+            // 1. 전체 문서의 언어 타겟 스위칭 처리
+            languages.forEach(l => {
+                // 상단 버튼 셋 활성화/비활성화 클래스 토글
+                const btn = document.getElementById('btn-' + l);
+                if (btn) {
+                    if (l === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                }
+            });
+
+            // 2. body 클래스를 변경하여 CSS 규칙에 따라 텍스트 화면 제어
+            document.body.className = 'lang-' + lang;
+            document.documentElement.lang = lang;
         }
 
         // 제품별 이미지 슬라이더 조작 기능
