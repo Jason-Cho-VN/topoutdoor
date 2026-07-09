@@ -176,41 +176,43 @@
         <p class="section-desc en">Connecting global markets with top-tier quality and trust.</p>
         <p class="section-desc vn">Kết nối thị trường toàn cầu bằng chất lượng hàng đầu và sự tin cậy.</p>
         
-        <div class="about-container">
-            <div class="about-text">
-                <h3 class="ko">최고의 기술력과 대규모 생산 능력</h3>
-                <h3 class="en">Top Technical Excellence & Scalable CAPA</h3>
-                <h3 class="vn">Kỹ Thuật Xuất Sắc & Năng Lực Sản Xuất Lớn</h3>
-                <p class="ko">T.O.P Outdoor Vina는 2016년 베트남 빈증성에 설립된 아웃도어 제조 전문 기업입니다. 숙련된 현지 인력과 체계적인 한국식 품질 관리 시스템을 융합하여 글로벌 유수 브랜드들의 핵심 생산 기지 역할을 수행하고 있습니다.</p>
-                <p class="en">Established in 2016 in Binh Duong Province, Vietnam, T.O.P Outdoor Vina specializes in outdoor gear manufacturing. By combining a highly skilled local workforce with systematic Korean quality control, we serve as a core production hub for leading global brands.</p>
-                <p class="vn">Được thành lập vào năm 2016 tại tỉnh Bình Dương, Việt Nam, T.O.P Outdoor Vina là doanh nghiệp chuyên sản xuất thiết bị dã ngoại ngoài trời. Bằng cách kết hợp đội ngũ nhân lực địa phương lành nghề với hệ thống kiểm soát chất lượng chuẩn Hàn Quốc, chúng tôi đóng vai trò là trung tâm sản xuất cốt lõi cho các thương hiệu hàng đầu thế giới.</p>
-                
-                <div class="parent-info">
-                    <p class="ko"><strong>모회사 시너지:</strong> 한국 코스닥 상장사인 <strong>(주)ES큐브(www.escube.co.kr)</strong>의 텐트 및 아웃도어 전문 기술 표준을 그대로 적용하여 완벽한 신뢰성을 보장합니다.</p>
-                    <p class="en"><strong>Parent Company Synergy:</strong> We ensure absolute product reliability by strictly implementing the engineering standards of <strong>ES CUBE Co., Ltd. (www.escube.co.kr)</strong>, a KOSDAQ-listed company in South Korea.</p>
-                    <p class="vn"><strong>Hợp lực cùng Công ty mẹ:</strong> Chúng tôi đảm bảo độ tin cậy tuyệt đối của sản phẩm bằng cách áp dụng nghiêm ngặt các tiêu chuẩn kỹ thuật chuyên nghiệp về lều và thiết bị ngoài trời của <strong>ES CUBE Co., Ltd. (www.escube.co.kr)</strong>, một công ty niêm yết trên thị trường KOSDAQ Hàn Quốc.</p>
-                </div>
-            </div>
-            <div class="about-img"></div>
-                 <!-- [시네마 팝업 연동] 공장 전경 이미지 (클릭 시 비디오 오픈) -->
-            <div class="about-img" onclick="openCinemaVideo()" style="flex: 1; height: 350px; background: url('https://i.ibb.co/MxVVjdzy/factory-outline.jpg') no-repeat center center/cover; border-radius: 8px; cursor: pointer; position: relative; transition: transform 0.3s;">
-                <!-- 마우스 호버 시 은은하게 나타나는 재생 유도 레이어 -->
-                <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=0">
-                    <div style="color: #fff; font-size: 50px;"><i class="fa-solid fa-play"></i></div>
-                </div>
-            </div>
+       <!-- [레이아웃 정상화] 텍스트 영역을 넓히고 사진은 1개로만 단일화한 완본 -->
+    <div class="about-container">
+        
+        <!-- 좌측 텍스트 영역: 사진이 1개로 줄어들면서 자동으로 가로 폭이 더 크고 웅장하게 확장됩니다 -->
+        <div class="about-text" style="flex: 1.2;">
+            <h3 class="ko">최고의 기술력과 대규모 생산 능력</h3>
+            <h3 class="en">Top Technical Excellence & Scalable CAPA</h3>
+            <h3 class="vn">Kỹ Thuật Xuất Sắc & Năng Lực Sản Xuất Lớn</h3>
             
-            <!-- 화면 전체를 덮는 시네마 레이아웃 암막 창 (기본 숨김) -->
-            <div id="cinemaModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 9999; justify-content: center; align-items: center;">
-                <!-- 닫기 버튼 -->
-                <button onclick="closeCinemaVideo()" style="position: absolute; top: 25px; right: 35px; background: none; border: none; color: #fff; font-size: 35px; cursor: pointer; z-index: 10000;">&times;</button>
-                
-                <!-- 16:9 비율 유지 시네마 스크린 컨테이너 -->
-                <div style="width: 80%; max-width: 1000px; aspect-ratio: 16/9; background: #000; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                    <div id="cinemaPlayer"></div>
-                </div>
+            <p class="ko">T.O.P Outdoor Vina는 2016년 베트남 빈증성에 설립된 아웃도어 제조 전문 기업입니다. 숙련된 현지 인력과 체계적인 한국식 품질 관리 시스템을 융합하여 글로벌 유수 브랜드들의 핵심 생산 기지 역할을 수행하고 있습니다.</p>
+            <p class="en">Established in 2016 in Binh Duong Province, Vietnam, T.O.P Outdoor Vina specializes in outdoor gear manufacturing. By combining a highly skilled local workforce with systematic Korean quality control, we serve as a core production hub for leading global brands.</p>
+            <p class="vn">Được thành lập vào năm 2016 tại tỉnh Bình Dương, Việt Nam, T.O.P Outdoor Vina là doanh nghiệp chuyên sản xuất thiết bị dã ngoại ngoài trời. Bằng cách kết hợp đội ngũ nhân lực địa phương lành nghề với hệ thống kiểm soát chất lượng chuẩn Hàn Quốc, chúng tôi đóng vai trò là trung tâm sản xuất cốt lõi cho các thương hiệu hàng đầu thế giới.</p>
+            
+            <div class="parent-info">
+                <p class="ko"><strong>모회사 시너지:</strong> 한국 코스닥 상장사인 <strong>(주)ES큐브(www.escube.co.kr)</strong>의 텐트 및 아웃도어 전문 기술 표준을 그대로 적용하여 완벽한 신뢰성을 보장합니다.</p>
+                <p class="en"><strong>Parent Company Synergy:</strong> We ensure absolute product reliability by strictly implementing the engineering standards of <strong>ES CUBE Co., Ltd. (www.escube.co.kr)</strong>, a KOSDAQ-listed company in South Korea.</p>
+                <p class="vn"><strong>Hợp lực cùng Công ty mẹ:</strong> Chúng tôi đảm bảo độ tin cậy tuyệt đối của sản phẩm bằng cách áp dụng nghiêm ngặt các tiêu chuẩn kỹ thuật chuyên nghiệp về lều và thiết bị ngoài trời của <strong>ES CUBE Co., Ltd. (www.escube.co.kr)</strong>, một công ty niêm yết trên thị trường KOSDAQ Hàn Quốc.</p>
             </div>
-    </section>
+        </div>
+        
+        <!-- 우측 단일 공장 조감도: 이 사진 하나만 노출되며, 클릭 시 화면 전체에 시네마 팝업이 뜹니다 -->
+        <div class="about-img" onclick="openCinemaVideo()" style="flex: 1; height: 380px; background: url('https://i.ibb.co/MxVVjdzy/factory-outline.jpg') no-repeat center center/cover; border-radius: 8px; cursor: pointer; position: relative; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+            <!-- 마우스 올렸을 때 비디오 재생이 가능함을 직관적으로 보여주는 어두운 오버레이와 재생 아이콘 -->
+            <div class="play-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=0">
+                <div style="color: #fff; font-size: 55px; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.3));">▶</div>
+            </div>
+        </div>
+    
+    </div>
+    
+    <!-- [시네마 레이아웃] 화면 전체를 덮는 암막 창 (기존 구조와 자바스크립트는 그대로 연동됩니다) -->
+    <div id="cinemaModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 9999; justify-content: center; align-items: center;">
+        <button onclick="closeCinemaVideo()" style="position: absolute; top: 25px; right: 35px; background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; z-index: 10000;">&times;</button>
+        <div style="width: 85%; max-width: 1100px; aspect-ratio: 16/9; background: #000; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8); border-radius: 4px; overflow: hidden;">
+            <div id="cinemaPlayer"></div>
+        </div>
+    </div>
 
     <section id="products" style="border-top: 1px solid #eee;">
         <h2 class="ko">주요 제품 라인업</h2><h2 class="en">Our Product Lines</h2><h2 class="vn">Danh Mục Sản Phẩm Chính</h2>
