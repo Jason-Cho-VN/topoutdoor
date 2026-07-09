@@ -323,16 +323,20 @@
                 <span class="vn">Vui lòng sử dụng biểu mẫu trực tuyến bên phải để gửi yêu cầu.</span></p>
             </div>
     
-            <form class="contact-form" onsubmit="alert('Thank you for your message. We will contact you soon.'); return false;">
-                <input type="text" placeholder="Company Name / 회사명 / Tên công ty" required>
+            <form class="contact-form" action="https://formspree.io/f/xdarrzzz" method="POST">
+    
+                <input type="text" name="company_name" placeholder="Company Name / 회사명 / Tên công ty" required>
                 
-                <select required style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background-color: #fff; color: #555; font-family: inherit; cursor: pointer;">
+                <select name="department" required style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background-color: #fff; color: #555; font-family: inherit; cursor: pointer;">
                     <option value="" disabled selected>Select Contact Department / 문의 부서 선택 / Chọn bộ phận liên hệ</option>
-                    <option value="sales">[Sales Team] International B2B Inquiry / 글로벌 영업부 B2B 문의</option>
-                    <option value="info">[General Support] General & Logistics Inquiry / 일반 및 물류 제휴 문의</option>
+                    <option value="Sales Team">[Sales Team] International B2B Inquiry / 글로벌 영업부 B2B 문의</option>
+                    <option value="General Support">[General Support] General & Logistics Inquiry / 일반 및 물류 제휴 문의</option>
                 </select>
                 
-                <textarea rows="5" placeholder="Inquiry Details / 문의 내용 / Nội dung liên hệ (e.g., Target Quantity, Specs)" required></textarea>
+                <input type="email" name="email" placeholder="Buyer's Email Address / 답장받을 이메일 주소" required>
+                
+                <textarea rows="5" name="message" placeholder="Inquiry Details / 문의 내용 / Nội dung liên hệ (e.g., Target Quantity, Specs)" required></textarea>
+                
                 <button type="submit">
                     <span class="ko">문의 보내기</span><span class="en">Submit Inquiry</span><span class="vn">Gửi yêu cầu</span>
                 </button>
