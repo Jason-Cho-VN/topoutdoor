@@ -14,40 +14,40 @@
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; width: 100%; }
         .logo { font-size: 22px; font-weight: 800; color: #1a252f; letter-spacing: -0.5px; }
         
-        /* [CI 초록색 고정] Vina 문구를 브랜드 고유의 초록색 테마로 완벽 지정 [cite: 1512] */
+        /* [CI 초록색 고정] Vina 문구를 브랜드 고유의 초록색 테마로 완벽 지정 */
         .logo span { color: #2ecc71; }
         
         nav a { margin-left: 30px; font-weight: 500; font-size: 15px; text-decoration: none; transition: color 0.3s; }
         nav a:hover { color: #2ecc71; }
 
-        /* 3개국어 언어 스위치 버튼 [cite: 1773] */
+        /* 3개국어 언어 스위치 버튼 */
         .lang-switch { display: flex; gap: 5px; margin-left: 30px; }
         .lang-btn { background: #f1f3f5; border: 1px solid #dee2e6; padding: 5px 10px; font-size: 12px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: all 0.2s; }
         .lang-btn:hover { background: #e9ecef; }
         .lang-btn.active { background: #2ecc71; color: #fff; border-color: #2ecc71; }
 
-        /* 메인 비주얼 배경 영역 [cite: 1652, 1653] */
+        /* [정밀 교정] 메인 비주얼 배경 지정 (main-page-21 최신 원본 연동 완료) */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://i.ibb.co/7tQXcwY6/time100-Artboard-1-a4efb792-a069-4333-a08a-e6df071dbbcc.webp') no-repeat center center/cover;
             height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center; padding: 0 20px; width: 100%;
         }
-        .hero h1 { font-size: 52px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; [cite: 1654] }
-        .hero p { font-size: 22px; max-width: 800px; font-weight: 300; color: #f8f9fa; [cite: 1655] }
+        .hero h1 { font-size: 52px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
+        .hero p { font-size: 22px; max-width: 800px; font-weight: 300; color: #f8f9fa; }
 
-        /* 공통 섹션 레이아웃 (전체 가로폭 시원하게 복원 고정) [cite: 1488, 1489] */
-        section { padding: 90px 10%; text-align: center; width: 100%; clear: both; display: block; [cite: 1656] }
-        section h2 { font-size: 34px; margin-bottom: 15px; color: #1a252f; font-weight: 700; [cite: 1657] }
-        .section-desc { font-size: 16px; color: #777; margin-bottom: 60px; [cite: 1658] }
-        section h2::after { content: ''; display: block; width: 40px; height: 3px; background: #2ecc71; margin: 15px auto 0; [cite: 1659, 1660] }
+        /* 공통 섹션 레이아웃 (전체 가로폭 양옆 복원 고정) */
+        section { padding: 90px 10%; text-align: center; width: 100%; clear: both; display: block; }
+        section h2 { font-size: 34px; margin-bottom: 15px; color: #1a252f; font-weight: 700; }
+        .section-desc { font-size: 16px; color: #777; margin-bottom: 60px; }
+        section h2::after { content: ''; display: block; width: 40px; height: 3px; background: #2ecc71; margin: 15px auto 0; }
 
-        /* 1. 회사 상세 소개 (About Us) [cite: 1660] */
-        .about-container { display: flex; align-items: center; gap: 50px; text-align: left; width: 100%; [cite: 1660, 1661] }
-        .about-text { flex: 1; [cite: 1661] }
-        .about-text h3 { font-size: 24px; margin-bottom: 15px; color: #2c3e50; [cite: 1661, 1662] }
-        .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; [cite: 1662] }
-        .parent-info { background: #f8f9fa; border-left: 4px solid #2ecc71; padding: 20px; margin-top: 30px; [cite: 1662, 1663] }
+        /* 1. 회사 상세 소개 (About Us) */
+        .about-container { display: flex; align-items: center; gap: 50px; text-align: left; width: 100%; }
+        .about-text { flex: 1; }
+        .about-text h3 { font-size: 24px; margin-bottom: 15px; color: #2c3e50; }
+        .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; }
+        .parent-info { background: #f8f9fa; border-left: 4px solid #2ecc71; padding: 20px; margin-top: 30px; }
         
-        /* 공장 조감도 배경 포스터 및 세련된 영문 힌트 오버레이 지정 [cite: 1513, 1551] */
+        /* 공장 조감도 배경 포스터 및 세련된 영문 힌트 오버레이 지정 */
         .about-video-wrapper { 
             flex: 1; height: 350px; border-radius: 8px; overflow: hidden; 
             box-shadow: 0 8px 20px rgba(0,0,0,0.1); position: relative; 
@@ -57,12 +57,12 @@
         .about-video-wrapper iframe { width: 100%; height: 100%; border: none; opacity: 0; transition: opacity 0.5s ease; }
         .about-video-wrapper.playing iframe { opacity: 1; }
         
-        /* [요구사항 반영] 불필요한 볼륨 안내 삭제 및 세련된 테두리 박스 영문 디자인  */
+        /* 세련된 테두리 박스 영문 디자인 */
         .video-overlay-hint { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.35); display: flex; flex-direction: column; 
             justify-content: center; align-items: center; color: #fff; 
-            transition: opacity 0.3s; z-index: 2; [cite: 1562] \
+            transition: opacity 0.3s; z-index: 2; 
         }
         .video-overlay-hint span { 
             background: rgba(0, 0, 0, 0.65); padding: 12px 26px; border-radius: 6px; 
@@ -73,74 +73,72 @@
         .about-video-wrapper:hover .video-overlay-hint span {
             background: #2ecc71; border-color: #2ecc71; transform: scale(1.03);
         }
-        .about-video-wrapper.playing .video-overlay-hint { opacity: 0; pointer-events: none; [cite: 1564] }
+        .about-video-wrapper.playing .video-overlay-hint { opacity: 0; pointer-events: none; }
 
-        /* 2. 제품 포트폴리오 3열 그리드 [cite: 1665] */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 100%; [cite: 1665] }
-        .prod-card { background: #fff; border: 1px solid #eee; border-radius: 6px; overflow: hidden; text-align: left; transition: transform 0.3s, box-shadow 0.3s; [cite: 1665, 1666] }
-        .prod-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); [cite: 1666, 1667] }
-        .prod-slider-container { position: relative; height: 220px; width: 100%; overflow: hidden; background-color: #ddd; [cite: 1667, 1668] }
-        .prod-slider-track { display: flex; height: 100%; width: 100%; transition: transform 0.4s ease-in-out; [cite: 1668, 1669] }
+        /* 2. 제품 포트폴리오 3열 그리드 */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 100%; }
+        .prod-card { background: #fff; border: 1px solid #eee; border-radius: 6px; overflow: hidden; text-align: left; transition: transform 0.3s, box-shadow 0.3s; }
+        .prod-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .prod-slider-container { position: relative; height: 220px; width: 100%; overflow: hidden; background-color: #ddd; }
+        .prod-slider-track { display: flex; height: 100%; width: 100%; transition: transform 0.4s ease-in-out; }
         
-        /* [중요] 늘어남 현상을 해결하는 핵심 3줄 스위치 보존 [cite: 1669, 1670] */
-        .prod-slider-slide { flex-shrink: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; [cite: 1669, 1670, 1672] }
+        /* [핵심 교정 및 방어] 사진들이 절대 억지로 좌우로 늘어나거나 찌그러지지 않게 꽉 채우는 황금 리사이징 스위치 */
+        .prod-slider-slide { flex-shrink: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; }
         
-        /* 슬라이더 제어 버튼 [cite: 1673] */
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.4); color: #fff; border: none; width: 34px; height: 34px; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; border-radius: 50%; z-index: 5; transition: background 0.3s; user-select: none; [cite: 1673, 1674, 1675] }
+        /* 슬라이더 제어 버튼 */
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.4); color: #fff; border: none; width: 34px; height: 34px; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; border-radius: 50%; z-index: 5; transition: background 0.3s; user-select: none; }
         .slider-btn:hover { background: #2ecc71; }
-        .btn-prev { left: 10px; [cite: 1676] }
-        .btn-next { right: 10px; [cite: 1676, 1677] }
-        .prod-info { padding: 20px; [cite: 1677, 1678] }
-        .prod-info h4 { font-size: 18px; margin-bottom: 10px; color: #1a252f; [cite: 1678, 1679] }
-        .prod-info p { font-size: 14px; color: #666; [cite: 1679] }
+        .btn-prev { left: 10px; }
+        .btn-next { right: 10px; }
+        .prod-info { padding: 20px; }
+        .prod-info h4 { font-size: 18px; margin-bottom: 10px; color: #1a252f; }
+        .prod-info p { font-size: 14px; color: #666; }
 
-        /* 3. 인프라 및 설비 (Infrastructure 차콜 60% 틴트 세팅) [cite: 1755, 1773] */
-        .infra-bg { background-color: #f9fbfd; [cite: 1680, 1681] }
+        /* 3. 인프라 및 설비 (Infrastructure 차콜 60% 틴트 세팅) */
+        .infra-bg { background-color: #f9fbfd; }
         .infra-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 20px; width: 100%; }
         .infra-custom-card { position: relative; border-radius: 8px; overflow: hidden; padding: 50px 35px; text-align: left; border-top: 3px solid #2ecc71; min-height: 260px; display: flex; flex-direction: column; justify-content: center; background-size: cover; background-position: center; background-repeat: no-repeat; transition: transform 0.3s, box-shadow 0.3s; z-index: 1; }
         .infra-custom-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
-        .infra-custom-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(44, 62, 80, 0.6); z-index: -1; [cite: 1755] }
+        .infra-custom-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(44, 62, 80, 0.6); z-index: -1; }
         .infra-custom-card h4 { font-size: 22px; color: #fff; margin-bottom: 15px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         .infra-custom-card p { font-size: 15px; color: #f8f9fa; line-height: 1.6; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 
-        /* 4. 문의 양식 (Contact Us) [cite: 1684] */
-        .contact-wrapper { display: flex; gap: 50px; text-align: left; width: 100%; [cite: 1684, 1685] }
-        .contact-info { flex: 1; [cite: 1685] }
-        .contact-info p { margin-bottom: 15px; font-size: 16px; [cite: 1685, 1686] }
-        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 15px; [cite: 1686, 1687] }
-        .contact-form input, .contact-form select, .contact-form textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 100%; background-color: #fff; [cite: 1687, 1688] }
-        .contact-form button { background: #2ecc71; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; transition: background 0.3s; [cite: 1688, 1689] }
+        /* 4. 문의 양식 (Contact Us) */
+        .contact-wrapper { display: flex; gap: 50px; text-align: left; width: 100%; }
+        .contact-info { flex: 1; }
+        .contact-info p { margin-bottom: 15px; font-size: 16px; }
+        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+        .contact-form input, .contact-form select, .contact-form textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 100%; background-color: #fff; }
+        .contact-form button { background: #2ecc71; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; transition: background 0.3s; }
         .contact-form button:hover { background: #27ae60; }
 
-        /* 5. 파트너사 무한 끊김 없는 슬라이더 스타일 [cite: 1690] */
-        .partners-section { background: #fff; padding: 80px 0; overflow: hidden; width: 100%; position: relative; clear: both; [cite: 1690, 1691] }
-        .logo-slider { position: relative; width: 100%; margin-top: 40px; overflow: hidden; padding: 15px 0; [cite: 1691, 1692] }
-        .logo-slider::before, .logo-slider::after { content: ""; height: 100%; position: absolute; width: 150px; z-index: 2; pointer-events: none; [cite: 1692, 1693] }
-        .logo-slider::before { left: 0; top: 0; background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); [cite: 1693, 1694] }
-        .logo-slider::after { right: 0; top: 0; background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); [cite: 1694, 1695] }
-        .logo-track { display: flex; width: max-content; animation: infiniteScroll 35s linear infinite; [cite: 1696] }
-        .slide { flex-shrink: 0; width: 240px; height: 70px; display: flex; justify-content: center; align-items: center; padding: 0 25px; [cite: 1696, 1697, 1698] }
-        
-        /* 글자형 로고 크기 밸런싱 세팅 [cite: 1698] */
-        .slide img { width: auto; height: auto; max-width: 170px; max-height: 60px; min-width: 140px; min-height: 45px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s ease; transform: scale(1.05); [cite: 1698, 1699, 1700] }
-        .slide img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); [cite: 1700] }
-        @keyframes infiniteScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); [cite: 1701] } }
+        /* 5. 파트너사 무한 끊김 없는 슬라이더 스타일 */
+        .partners-section { background: #fff; padding: 80px 0; overflow: hidden; width: 100%; position: relative; clear: both; }
+        .logo-slider { position: relative; width: 100%; margin-top: 40px; overflow: hidden; padding: 15px 0; }
+        .logo-slider::before, .logo-slider::after { content: ""; height: 100%; position: absolute; width: 150px; z-index: 2; pointer-events: none; }
+        .logo-slider::before { left: 0; top: 0; background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); }
+        .logo-slider::after { right: 0; top: 0; background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); }
+        .logo-track { display: flex; width: max-content; animation: infiniteScroll 35s linear infinite; }
+        .slide { flex-shrink: 0; width: 240px; height: 70px; display: flex; justify-content: center; align-items: center; padding: 0 25px; }
+        .slide img { width: auto; height: auto; max-width: 170px; max-height: 60px; min-width: 140px; min-height: 45px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s ease; transform: scale(1.05); }
+        .slide img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
+        @keyframes infiniteScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* 푸터 영역 [cite: 1702] */
-        footer { background: #1a252f; color: #fff; padding: 50px 10%; font-size: 14px; border-top: 5px solid #2ecc71; position: relative; z-index: 10; width: 100%; clear: both; display: block; [cite: 1702, 1703] }
-        .footer-cols { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; [cite: 1703, 1704] }
+        /* 푸터 영역 */
+        footer { background: #1a252f; color: #fff; padding: 50px 10%; font-size: 14px; border-top: 5px solid #2ecc71; position: relative; z-index: 10; width: 100%; clear: both; display: block; }
+        .footer-cols { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
         .footer-col { flex: 1; min-width: 250px; }
-        .footer-col h5 { font-size: 16px; margin-bottom: 15px; color: #f8f9fa; [cite: 1704] }
-        .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid #2c3e50; text-align: center; color: #7f8c8d; [cite: 1704, 1705] }
+        .footer-col h5 { font-size: 16px; margin-bottom: 15px; color: #f8f9fa; }
+        .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid #2c3e50; text-align: center; color: #7f8c8d; }
 
-        /* [흰창 복구 완료] 안정적이고 빠른 3개국어 고속 CSS 바인딩 아키텍처 [cite: 1545] */
+        /* 안정적이고 빠른 3개국어 고속 CSS 바인딩 아키텍처 */
         body.lang-ko .en, body.lang-ko .vn { display: none !important; }
         body.lang-en .ko, body.lang-en .vn { display: none !important; }
         body.lang-vn .ko, body.lang-vn .en { display: none !important; }
 
-        /* 반응형 디자인 [cite: 1707] */
-        @media (max-width: 992px) { .about-container, .contact-wrapper { flex-direction: column; [cite: 1707, 1708] } .about-video-wrapper { height: 250px; width: 100%; } }
-        @media (max-width: 768px) { header { flex-direction: column; gap: 15px; [cite: 1708, 1709] } nav a { margin: 0 10px; [cite: 1709] } .hero h1 { font-size: 34px; [cite: 1709] } .hero p { font-size: 16px; [cite: 1709] } }
+        /* 반응형 디자인 */
+        @media (max-width: 992px) { .about-container, .contact-wrapper { flex-direction: column; } .about-video-wrapper { height: 250px; width: 100%; } }
+        @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } nav a { margin: 0 10px; } .hero h1 { font-size: 34px; } .hero p { font-size: 16px; } }
     </style>
 </head>
 <body class="lang-ko">
@@ -213,13 +211,11 @@
                     <button class="slider-btn btn-prev" onclick="moveSlider('slider-family', -1)">&#139;</button>
                     <button class="slider-btn btn-next" onclick="moveSlider('slider-family', 1)">&#155;</button>
                     <div class="prod-slider-track">
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/NdsGj6hM/family-tent-snow-peak-LNS.png');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/WWKCbXtb/family-tent-snow-peak-LNS2.webp');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/S7VLsr1b/family-tent-snow-peak-LNS3.webp');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/8DZTdKbp/family-tent-snow-peak-LNS4.jpg');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/spn9vTCg/family-tent-snow-peak-LNSDome.webp');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/4nKL4p1s/family-tent-snow-peak-LNSDome2.webp');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/60yw9Tt4/family-tent-snow-peak-LNSDome3.webp');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/BHJDDkd1/family-tent-snow-peak-LNS.webp');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/ynmzJ5vq/family-tent-snow-peak-LNS2.jpg');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/ycJNZfCh/family-tent-snow-peak-LNS3.webp');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/Bb0skpZ/family-tent-snow-peak-LNSDome.webp');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/mVKqW0jp/family-tent-snow-peak-LNSDome2.jpg');"></div>
                     </div>
                 </div>
                 <div class="prod-info">
@@ -235,19 +231,17 @@
                     <button class="slider-btn btn-prev" onclick="moveSlider('slider-alpine', -1)">&#139;</button>
                     <button class="slider-btn btn-next" onclick="moveSlider('slider-alpine', 1)">&#155;</button>
                     <div class="prod-slider-track">
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/M5Kk20WL/Lightweight-tent-hogback.jpg');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/kVkFN2Ht/Lightweight-tent-meso.jpg');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/PsD0r5wX/lightweight-tent-Meso.webp');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/xS6xsTJQ/Lightweight-tent-moment.jpg');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/932Lwqs3/Lightweight-tent-protrek.jpg');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/N2fn1FnR/LNS-DOME-M2.png');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/vgdDfWM/Lightweight-tent-hogback.jpg');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/tpdqb9MR/Lightweight-tent-meso.jpg');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/gCpf1vB/Lightweight-tent-moment.jpg');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/0jtXqpR9/Lightweight-tent-protrek.jpg');"></div>
                     </div>
                 </div>
                 <div class="prod-info">
                     <h4 class="ko">전문가용 알파인 텐트</h4><h4 class="en">Alpine & Backpacking Tents</h4><h4 class="vn">Lều dã ngoại chuyên nghiệp</h4>
                     <p class="ko">백패킹과 고산 등반에 최적화된 초경량 원단 공정과 탁월한 방풍·방수 설계의 고기능성 테크니컬 제품입니다.</p>
                     <p class="en">Ultra-lightweight fabrics engineered with maximum windproof and waterproof capacities for extreme mountaineering.</p>
-                    <p class="vn">Sử dụng vải siêu nhẹ với khả năng chống gió và kháng nước tối đa cho leo núi chuyên nghiệp.</p>
+                    <p class="vn">Sử dụng vải siêu nhẹ với khả năng chống gió 및 kháng nước tối đa cho leo núi chuyên nghiệp.</p>
                 </div>
             </div>
 
@@ -266,7 +260,7 @@
                     <h4 class="ko">레저용 그늘막 / 타프</h4><h4 class="en">Leisure Tarps & Sunshades</h4><h4 class="vn">Mái che thông dụng dã ngoại</h4>
                     <p class="ko">자외선 차단 특수 코팅 가공과 수려한 곡선의 인장력 설계를 매칭하여 완벽한 그늘 공간을 선사합니다.</p>
                     <p class="en">Featuring specialized anti-UV coatings and streamlined aerodynamic tension design for complete open-air shading.</p>
-                    <p class="vn">Trang bị lớp phủ chống tia UV 전문적인 kết합 cùng kết cấu chịu lực khí động học hoàn hảo.</p>
+                    <p class="vn">Trang bị lớp phủ chống tia UV chuyên dụng kết hợp cùng kết cấu chịu lực khí động học hoàn hảo.</p>
                 </div>
             </div>
         </div>
@@ -275,7 +269,7 @@
     <section id="infrastructure" class="infra-bg">
         <h2 class="ko">생산 인프라 및 핵심 역량</h2>
         <h2 class="en">Manufacturing Infrastructure</h2>
-        <h2 class="vn">Cơ sở hạ tầng và Năng lực lõi</h2>
+        <h2 class="vn">Cơ sở hạ tầng 및 Năng lực lõi</h2>
         <p class="section-desc ko">글로벌 스탠다드를 충족하는 체계적인 베트남 현지 공장 인프라</p>
         <p class="section-desc en">Vietnam factory infrastructure optimized to satisfy global industry standards</p>
         <p class="section-desc vn">Hệ thống nhà máy tại Việt Nam được tối ưu hóa để đáp ứng các tiêu chuẩn công nghiệp toàn cầu</p>
@@ -321,7 +315,7 @@
                 <h3>T.O.P OUTDOOR VINA CO., LTD.</h3>
                 <br>
                 <p class="ko">📍 <strong>공장 주소:</strong> 베트남 빈증성 바우방 산업단지 A-6A2-CN 필지</p>
-                <p class="en">📍 <strong>Factory Address:</strong> Lot A-6A2-CN, Bau Bang Industrial Park, Bau Bang Commune, Binh Duong Province, Vietnam [cite: 1796]</p>
+                <p class="en">📍 <strong>Factory Address:</strong> Lot A-6A2-CN, Bau Bang Industrial Park, Bau Bang Commune, Binh Duong Province, Vietnam</p>
                 <p class="vn">📍 <strong>Địa chỉ nhà máy:</strong> Lô A-6A2-CN, Khu Công Nghiệp Bàu Bàng, Huyện Bàu Bàng, Tỉnh Bình Dương, Việt Nam</p>
                 <p>📞 <strong>Tel:</strong> +84 (0)274 3803 709</p>
             </div>
@@ -382,7 +376,7 @@
                 <h5>T.O.P Outdoor Vina</h5>
                 <p class="ko">최상의 퀄리티와 파트너십을 최우선으로 생각합니다.</p>
                 <p class="en">We prioritize supreme engineering values and global trust.</p>
-                <p class="vn">Chúng tôi đặt chất lượng và chữ tín lên hàng đầu.</p>
+                <p class="vn">Chúng tôi đặt chất lượng 및 chữ tín lên hàng đầu.</p>
             </div>
             <div class="footer-col">
                 <h5>Headquarters</h5>
@@ -412,7 +406,7 @@
             if(selectBox) { selectBox.value = ""; }
         }
 
-        /* 2. 제품 슬라이더 제어 [cite: 1130] */
+        /* 2. 제품 슬라이더 제어 */
         const sliderPositions = { 'slider-family': 0, 'slider-alpine': 0, 'slider-tarp': 0 };
         function moveSlider(sliderId, direction) {
             const container = document.getElementById(sliderId);
@@ -427,7 +421,7 @@
             track.style.transform = `translateX(-${currentIdx * 100}%)`;
         }
 
-        /* 3. [비디오 로직 동기화] 세련된 영문 오버레이 노출 -> 클릭 시 50% 볼륨 영구 로드 재생 [cite: 1514] */
+        /* 3. [비디오 로직 동기화] 세련된 영문 오버레이 노출 -> 클릭 시 50% 볼륨 영구 로드 재생 */
         function playCompanyVideo() {
             const container = document.getElementById('video-container');
             const iframe = document.getElementById('player-iframe');
