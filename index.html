@@ -314,17 +314,28 @@
             <div class="contact-info">
                 <h3>T.O.P OUTDOOR VINA CO., LTD.</h3>
                 <p><strong>📍 <span class="ko">공장 주소</span><span class="en">Factory Address</span><span class="vn">Địa chỉ nhà máy</span>:</strong><br>
-                Lot A-6A2-CN, Bau Bang Industrial Park, Bau Bang Commune, Ho Chi Minh City, Vietnam</p>
+                Lot A-6A2-CN, Bau Bang Industrial Park, Bau Bang Commune, Binh Duong Province, Vietnam</p>
                 <p><strong>📞 Tel:</strong> +84 (0)274 3803 709</p>
-                <p><strong>✉️ Email:</strong><br>
-                   <a href="mailto:sales@escube.co.kr" style="color: inherit; text-decoration: underline;">sales@escube.co.kr</a><br>
-                   <a href="mailto:topoutdoorvina@gmail.com" style="color: inherit; text-decoration: underline;">topoutdoorvina@gmail.com</a></p>
+        
+                <p><strong>✉️ Inquiry:</strong><br>
+                <span class="ko">우측의 온라인 문의 양식을 작성해 부서별로 전송해 주세요.</span>
+                <span class="en">Please use the online form on the right to submit your inquiry.</span>
+                <span class="vn">Vui lòng sử dụng biểu mẫu trực tuyến bên phải để gửi yêu cầu.</span></p>
             </div>
+    
             <form class="contact-form" onsubmit="alert('Thank you for your message. We will contact you soon.'); return false;">
                 <input type="text" placeholder="Company Name / 회사명 / Tên công ty" required>
-                <input type="email" placeholder="Email Address / 이메일 주소 / Địa chỉ email" required>
+                
+                <select required style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background-color: #fff; color: #555; font-family: inherit; cursor: pointer;">
+                    <option value="" disabled selected>Select Contact Department / 문의 부서 선택 / Chọn bộ phận liên hệ</option>
+                    <option value="sales">[Sales Team] International B2B Inquiry / 글로벌 영업부 B2B 문의</option>
+                    <option value="info">[General Support] General & Logistics Inquiry / 일반 및 물류 제휴 문의</option>
+                </select>
+                
                 <textarea rows="5" placeholder="Inquiry Details / 문의 내용 / Nội dung liên hệ (e.g., Target Quantity, Specs)" required></textarea>
-                <button type="submit"><span class="ko">문의 보내기</span><span class="en">Submit Inquiry</span><span class="vn">Gửi yêu cầu</span></button>
+                <button type="submit">
+                    <span class="ko">문의 보내기</span><span class="en">Submit Inquiry</span><span class="vn">Gửi yêu cầu</span>
+                </button>
             </form>
         </div>
     </section>
