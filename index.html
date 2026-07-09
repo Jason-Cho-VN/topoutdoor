@@ -1,103 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T.O.P Outdoor Vina - Premium Outdoor Manufacturing</title>
+    <title>T.O.P Outdoor Vina</title>
     <style>
-        /* 기본 디자인 스타일 */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
-        body { color: #333; line-height: 1.6; background-color: #fff; }
+        /* 기본 스타일 초기화 */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', 'Segoe UI', sans-serif; }
+        body { background-color: #fff; color: #333; line-height: 1.6; width: 100%; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
-        
-        /* 고정 헤더 네비게이션 */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 22px; font-weight: 800; color: #1a252f; letter-spacing: 0.5px; }
-        /* [CI 컬러 반영] Vina 컬러를 공식 녹색(#00b86b)으로 교체 */
-        .logo span { color: #00b86b; }
-        nav { display: flex; align-items: center; }
-        nav a { margin-left: 25px; font-weight: 600; font-size: 15px; color: #555; transition: color 0.3s; }
-        /* 마우스 호버 시 포인트 컬러도 그린으로 변경 */
-        nav a:hover { color: #00b86b; }
 
-        /* 3개국어 개편 언어 선택 버튼 스타일 */
-        .lang-switch { display: flex; gap: 5px; margin-left: 25px; }
-        .lang-switch button { background: #f1f2f6; color: #333; border: 1px solid #ddd; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-size: 12px; font-weight: bold; transition: all 0.3s; }
-        .lang-switch button.active { background: #1a252f; color: #fff; border-color: #1a252f; }
-        .lang-switch button:hover { background: #00b86b; color: #fff; border-color: #00b86b; }
+        /* 헤더 & 네비게이션 */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; width: 100%; }
+        .logo { font-size: 22px; font-weight: 800; color: #1a252f; letter-spacing: -0.5px; }
+        .logo span { color: #e74c3c; }
+        nav a { margin-left: 30px; font-weight: 500; font-size: 15px; text-decoration: none; transition: color 0.3s; }
+        nav a:hover { color: #e74c3c; }
 
-        /* 메인 비주얼 배경 지정 */
+        /* 3개국어 언어 스위치 버튼 */
+        .lang-switch { display: flex; gap: 5px; margin-left: 30px; }
+        .lang-btn { background: #f1f3f5; border: 1px solid #dee2e6; padding: 5px 10px; font-size: 12px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: all 0.2s; }
+        .lang-btn:hover { background: #e9ecef; }
+        .lang-btn.active { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+
+        /* 메인 비주얼 배경 영역 */
         .hero { 
-            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://i.ibb.co/QFzFh92j/main-page-21.jpg') no-repeat center center/cover; 
-            height: 70vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            color: #fff; 
-            text-align: center; 
-            padding: 0 20px; 
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://i.ibb.co/7tQXcwY6/time100-Artboard-1-a4efb792-a069-4333-a08a-e6df071dbbcc.webp') no-repeat center center/cover;
+            height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center; padding: 0 20px; width: 100%;
         }
         .hero h1 { font-size: 52px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
         .hero p { font-size: 22px; max-width: 800px; font-weight: 300; color: #f8f9fa; }
 
-        /* 공통 섹션 레이아웃 */
-        section { padding: 90px 10%; text-align: center; }
+        /* 공통 섹션 레이아웃 (정상 규격 독립 배치) */
+        section { padding: 90px 10%; text-align: center; width: 100%; clear: both; display: block; }
         section h2 { font-size: 34px; margin-bottom: 15px; color: #1a252f; font-weight: 700; }
         .section-desc { font-size: 16px; color: #777; margin-bottom: 60px; }
-        /* [CI 컬러 반영] 하단 데코 라인 색상도 녹색(#00b86b)으로 일치 */
-        section h2::after { content: ''; display: block; width: 40px; height: 3px; background: #00b86b; margin: 15px auto 0; }
+        section h2::after { content: ''; display: block; width: 40px; height: 3px; background: #e74c3c; margin: 15px auto 0; }
 
         /* 1. 회사 상세 소개 (About Us) */
-        .about-container { display: flex; align-items: center; gap: 50px; text-align: left; }
+        .about-container { display: flex; align-items: center; gap: 50px; text-align: left; width: 100%; }
         .about-text { flex: 1; }
         .about-text h3 { font-size: 24px; margin-bottom: 15px; color: #2c3e50; }
         .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; }
-        /* [CI 컬러 반영] 보더 색상 녹색 수정 */
-        .parent-info { background: #f8f9fa; border-left: 4px solid #00b86b; padding: 20px; margin-top: 30px; }
-        .about-img { flex: 1; height: 350px; background: url('https://i.ibb.co/MxVVjdzy/factory-outline.jpg') no-repeat center center/cover; border-radius: 8px; }
+        .parent-info { background: #f8f9fa; border-left: 4px solid #e74c3c; padding: 20px; margin-top: 30px; }
+        
+        /* 유튜브 비디오 플레이어 컨테이너 */
+        .about-video-wrapper { flex: 1; height: 350px; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); position: relative; background: #000; cursor: pointer; }
+        .about-video-wrapper iframe { width: 100%; height: 100%; border: none; pointer-events: none; }
+        .video-overlay-hint { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.7); color: #fff; padding: 6px 12px; font-size: 12px; border-radius: 4px; font-weight: 500; pointer-events: none; display: flex; align-items: center; gap: 6px; transition: opacity 0.3s; }
 
         /* 2. 제품 포트폴리오 3열 그리드 */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 100%; }
         .prod-card { background: #fff; border: 1px solid #eee; border-radius: 6px; overflow: hidden; text-align: left; transition: transform 0.3s, box-shadow 0.3s; }
         .prod-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
-        
         .prod-slider-container { position: relative; height: 220px; width: 100%; overflow: hidden; background-color: #ddd; }
         .prod-slider-track { display: flex; height: 100%; width: 100%; transition: transform 0.4s ease-in-out; }
-        .prod-slider-slide {
-            flex-shrink: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;       
-            background-position: center;   
-            background-repeat: no-repeat;
-        }
         
+        /* 제품 이미지 리사이징 공통 설정 */
+        .prod-slider-slide { flex-shrink: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; }
+        
+        /* 슬라이더 제어 버튼 */
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.4); color: #fff; border: none; width: 34px; height: 34px; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; border-radius: 50%; z-index: 5; transition: background 0.3s; user-select: none; }
-        .slider-btn:hover { background: #00b86b; }
+        .slider-btn:hover { background: #e74c3c; }
         .btn-prev { left: 10px; }
         .btn-next { right: 10px; }
-        
         .prod-info { padding: 20px; }
         .prod-info h4 { font-size: 18px; margin-bottom: 10px; color: #1a252f; }
         .prod-info p { font-size: 14px; color: #666; }
 
         /* 3. 인프라 및 설비 (Infrastructure) */
         .infra-bg { background-color: #f9fbfd; }
-        /* [CI 컬러 반영] 카드 상단 보더 라인 색상 녹색(#00b86b) 변경 */
-        .infra-card { background: #fff; padding: 40px 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-top: 3px solid #00b86b; text-align: left; }
-        .infra-card h4 { font-size: 20px; margin-bottom: 15px; color: #2c3e50; }
-        .infra-card p { font-size: 15px; color: #666; }
+        .infra-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 20px; width: 100%; }
+        .infra-custom-card { position: relative; border-radius: 8px; overflow: hidden; padding: 50px 35px; text-align: left; border-top: 3px solid #e74c3c; min-height: 260px; display: flex; flex-direction: column; justify-content: center; background-size: cover; background-position: center; background-repeat: no-repeat; transition: transform 0.3s, box-shadow 0.3s; z-index: 1; }
+        .infra-custom-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
+        .infra-custom-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(44, 62, 80, 0.6); z-index: -1; }
+        .infra-custom-card h4 { font-size: 22px; color: #fff; margin-bottom: 15px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .infra-custom-card p { font-size: 15px; color: #f8f9fa; line-height: 1.6; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 
         /* 4. 문의 양식 (Contact Us) */
-        .contact-wrapper { display: flex; gap: 50px; text-align: left; }
+        .contact-wrapper { display: flex; gap: 50px; text-align: left; width: 100%; }
         .contact-info { flex: 1; }
         .contact-info p { margin-bottom: 15px; font-size: 16px; }
         .contact-form { flex: 1; display: flex; flex-direction: column; gap: 15px; }
-        .contact-form input, .contact-form textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
-        /* [CI 컬러 반영] 문의하기 버튼 색상 녹색(#00b86b) 변경 */
-        .contact-form button { background: #00b86b; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; transition: background 0.3s; }
-        .contact-form button:hover { background: #009656; }
+        .contact-form input, .contact-form select, .contact-form textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 100%; background-color: #fff; }
+        .contact-form button { background: #e74c3c; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; transition: background 0.3s; }
+        .contact-form button:hover { background: #c0392b; }
 
         /* 5. 파트너사 무한 끊김 없는 슬라이더 스타일 */
         .partners-section { background: #fff; padding: 80px 0; overflow: hidden; width: 100%; position: relative; clear: both; }
@@ -105,432 +92,335 @@
         .logo-slider::before, .logo-slider::after { content: ""; height: 100%; position: absolute; width: 150px; z-index: 2; pointer-events: none; }
         .logo-slider::before { left: 0; top: 0; background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); }
         .logo-slider::after { right: 0; top: 0; background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); }
-
         .logo-track { display: flex; width: max-content; animation: infiniteScroll 35s linear infinite; }
         .slide { flex-shrink: 0; width: 240px; height: 70px; display: flex; justify-content: center; align-items: center; padding: 0 25px; }
-        .slide img {
-            width: auto; height: auto;
-            max-width: 170px; max-height: 60px;
-            min-width: 140px; min-height: 45px;
-            object-fit: contain;
-            filter: grayscale(100%); opacity: 0.6;
-            transition: all 0.3s ease; transform: scale(1.05);
-        }
+        
+        /* 로고 그래픽 이미지 맞춤 비율 */
+        .slide img { width: auto; height: auto; max-width: 170px; max-height: 60px; min-width: 140px; min-height: 45px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s ease; transform: scale(1.05); }
         .slide img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
-
         @keyframes infiniteScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* 푸터 영역 */
-        /* [CI 컬러 반영] 푸터 상단 라인 녹색(#00b86b) 변경 */
-        footer { background: #1a252f; color: #fff; padding: 50px 10%; font-size: 14px; border-top: 5px solid #00b86b; position: relative; z-index: 10; }
+        /* 푸터 영역 (완전 너비 확보) */
+        footer { background: #1a252f; color: #fff; padding: 50px 10%; font-size: 14px; border-top: 5px solid #e74c3c; position: relative; z-index: 10; width: 100%; clear: both; display: block; }
         .footer-cols { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+        .footer-col { flex: 1; min-width: 250px; }
         .footer-col h5 { font-size: 16px; margin-bottom: 15px; color: #f8f9fa; }
         .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid #2c3e50; text-align: center; color: #7f8c8d; }
-        
-        /* [3개국어 순정 핵심 제어 엔진] */
-        body.lang-ko .ko { display: block; }
-        body.lang-ko .en, body.lang-ko .vn { display: none; }
 
-        body.lang-en .en { display: block; }
-        body.lang-en .ko, body.lang-en .vn { display: none; }
-
-        body.lang-vn .vn { display: block; }
-        body.lang-vn .ko, body.lang-vn .en { display: none; }
+        /* 고속 CSS 바인딩 3개국어 아키텍처 */
+        body.lang-ko .en, body.lang-ko .vn { display: none !important; }
+        body.lang-en .ko, body.lang-en .vn { display: none !important; }
+        body.lang-vn .ko, body.lang-en .en { display: none !important; }
+        body.lang-vn .en { display: none; } 
 
         /* 반응형 디자인 */
-        @media (max-width: 992px) { .about-container, .contact-wrapper { flex-direction: column; } .about-img { height: 250px; } }
-        @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } nav { flex-direction: column; gap: 10px; } nav a { margin: 0 10px; } .lang-switch { margin-left: 0; margin-top: 5px; } .hero h1 { font-size: 34px; } .hero p { font-size: 16px; } }
+        @media (max-width: 992px) { .about-container, .contact-wrapper { flex-direction: column; } .about-video-wrapper { height: 250px; width: 100%; } }
+        @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } nav a { margin: 0 10px; } .hero h1 { font-size: 34px; } .hero p { font-size: 16px; } }
     </style>
 </head>
 <body class="lang-ko">
 
     <header>
-        <!-- 로고 CI 그린 배인 세팅 완료 -->
-        <div class="logo">T.O.P Outdoor <span>Vina</span></div>
+        <div class="logo">T.O.P <span>Outdoor Vina</span></div>
         <nav>
-            <a href="#about" class="ko">회사소개</a><a href="#about" class="en">About Us</a><a href="#about" class="vn">Giới Thiệu</a>
-            <a href="#products" class="ko">제품안내</a><a href="#products" class="en">Products</a><a href="#products" class="vn">Sản Phẩm</a>
-            <a href="#infrastructure" class="ko">생산설비</a><a href="#infrastructure" class="en">Infrastructure</a><a href="#infrastructure" class="vn">Cơ Sở Hạ Tầng</a>
-            <a href="#contact" class="ko">비즈니스 문의</a><a href="#contact" class="en">Contact</a><a href="#contact" class="vn">Liên Hệ</a>
-            
-            <div class="lang-switch">
-                <button onclick="setLanguage('ko')" id="btn-ko" class="active">KO</button>
-                <button onclick="setLanguage('en')" id="btn-en">EN</button>
-                <button onclick="setLanguage('vn')" id="btn-vn">VN</button>
-            </div>
+            <a href="#about" class="ko">회사소개</a><a href="#about" class="en">About Us</a><a href="#about" class="vn">Giới thiệu</a>
+            <a href="#products" class="ko">제품소개</a><a href="#products" class="en">Products</a><a href="#products" class="vn">Sản phẩm</a>
+            <a href="#infrastructure" class="ko">생산인프라</a><a href="#infrastructure" class="en">Infrastructure</a><a href="#infrastructure" class="vn">Cơ sở hạ tầng</a>
+            <a href="#contact" class="ko">문의하기</a><a href="#contact" class="en">Contact Us</a><a href="#contact" class="vn">Liên hệ</a>
         </nav>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('ko')">KO</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="setLanguage('vn')">VN</button>
+        </div>
     </header>
 
-    <section class="hero">
-        <h1 class="ko">글로벌 아웃도어를 리드하는 제조 파트너</h1>
-        <h1 class="en">Your Global Outdoor Manufacturing Partner</h1>
-        <h1 class="vn">Đối Tác Sản Xuất Thiết Bị Ngoài Trời Toàn Cầu</h1>
-        <p class="ko">모회사 ES큐브의 축적된 기술력을 바탕으로 최고의 레저용 텐트를 공급합니다.</p>
-        <p class="en">Delivering world-class leisure tents backed by the proven technology of our parent company, ES CUBE.</p>
-        <p class="vn">Cung cấp các loại lều trại giải trí chất lượng hàng đầu dựa trên nền tảng công nghệ của công ty mẹ ES CUBE.</p>
-    </section>
+    <div class="hero">
+        <h1 class="ko">글로벌 프리미엄 텐트 제조사</h1>
+        <h1 class="en">Global Premium Tent Manufacturer</h1>
+        <h1 class="vn">Nhà Sản Xuất Lều Cao Cấp Toàn Cầu</h1>
+        <p class="ko">최고의 기술력과 생산 인프라로 아웃도어 시장을 선도합니다.</p>
+        <p class="en">Leading the outdoor market with superior technology and infrastructure.</p>
+        <p class="vn">Dẫn đầu thị trường dã ngoại với công nghệ và cơ sở hạ tầng vượt trội.</p>
+    </div>
 
     <section id="about">
-        <h2 class="ko">회사 개요</h2><h2 class="en">Company Overview</h2><h2 class="vn">Tổng Quan Công Ty</h2>
-        <p class="section-desc ko">최고의 품질과 신뢰로 글로벌 시장을 연결합니다.</p>
-        <p class="section-desc en">Connecting global markets with top-tier quality and trust.</p>
-        <p class="section-desc vn">Kết nối thị trường toàn cầu bằng chất lượng hàng đầu và sự tin cậy.</p>
+        <h2 class="ko">회사 개요</h2><h2 class="en">About Us</h2><h2 class="vn">Giới thiệu công ty</h2>
+        <p class="section-desc ko">T.O.P Outdoor Vina를 아끼고 성원해 주시는 전 세계 바이어 여러분께 감사드립니다.</p>
+        <p class="section-desc en">Thank you to global partners who support and trust T.O.P Outdoor Vina.</p>
+        <p class="section-desc vn">Xin chân thành cảm ơn các đối tác toàn cầu đã tin tưởng T.O.P Outdoor Vina.</p>
         
-       <!-- [레이아웃 정상화] 텍스트 영역을 넓히고 사진은 1개로만 단일화한 완본 -->
-    <div class="about-container">
-        
-        <!-- 좌측 텍스트 영역: 사진이 1개로 줄어들면서 자동으로 가로 폭이 더 크고 웅장하게 확장됩니다 -->
-        <div class="about-text" style="flex: 1.2;">
-            <h3 class="ko">최고의 기술력과 대규모 생산 능력</h3>
-            <h3 class="en">Top Technical Excellence & Scalable CAPA</h3>
-            <h3 class="vn">Kỹ Thuật Xuất Sắc & Năng Lực Sản Xuất Lớn</h3>
+        <div class="about-container">
+            <div class="about-text">
+                <h3 class="ko">최고의 아웃도어 텐트 제조 기술력</h3>
+                <h3 class="en">Top-tier Outdoor Tent Manufacturing Technology</h3>
+                <h3 class="vn">Công Nghệ Sản Xuất Lều Dã Ngoại Hàng Đầu</h3>
+                
+                <p class="ko">T.O.P Outdoor Vina는 베트남 현지 법인으로서 독보적인 봉제 기술력과 철저한 품질 관리를 바탕으로 글로벌 브랜드들의 혁신적인 아웃도어 캠핑 장비를 전문 생산하고 있습니다.</p>
+                <p class="en">T.O.P Outdoor Vina is a Vietnam-based enterprise specializing in manufacturing innovative outdoor camping gear for leading global brands, backed by unrivaled sewing expertise and strict quality assurance.</p>
+                <p class="vn">T.O.P Outdoor Vina là doanh nghiệp tại Việt Nam chuyên sản xuất thiết bị cắm trại dã ngoại sáng tạo cho các thương hiệu toàn cầu, dựa trên kỹ thuật may độc quyền và quy trình quản lý chất lượng nghiêm ngặt.</p>
+                
+                <div class="parent-info">
+                    <p class="ko"><strong>모회사 정보:</strong> 코스닥 상장사 주식회사 ES큐브 (www.escube.co.kr)의 탄탄한 자본력과 레저/아웃도어 기술 정체성을 공유하고 있습니다.</p>
+                    <p class="en"><strong>Parent Company:</strong> Sharing technical identity and strong financial stability with ESCUBE Co., Ltd. (www.escube.co.kr), listed on KOSDAQ.</p>
+                    <p class="vn"><strong>Công ty mẹ:</strong> Kế thừa năng lực tài chính vững mạnh và bản sắc công nghệ dã ngoại từ ESCUBE Co., Ltd. (www.escube.co.kr), niêm yết trên sàn KOSDAQ.</p>
+                </div>
+            </div>
             
-            <p class="ko">T.O.P Outdoor Vina는 2016년 베트남 빈증성에 설립된 아웃도어 제조 전문 기업입니다. 숙련된 현지 인력과 체계적인 한국식 품질 관리 시스템을 융합하여 글로벌 유수 브랜드들의 핵심 생산 기지 역할을 수행하고 있습니다.</p>
-            <p class="en">Established in 2016 in Binh Duong Province, Vietnam, T.O.P Outdoor Vina specializes in outdoor gear manufacturing. By combining a highly skilled local workforce with systematic Korean quality control, we serve as a core production hub for leading global brands.</p>
-            <p class="vn">Được thành lập vào năm 2016 tại tỉnh Bình Dương, Việt Nam, T.O.P Outdoor Vina là doanh nghiệp chuyên sản xuất thiết bị dã ngoại ngoài trời. Bằng cách kết hợp đội ngũ nhân lực địa phương lành nghề với hệ thống kiểm soát chất lượng chuẩn Hàn Quốc, chúng tôi đóng vai trò là trung tâm sản xuất cốt lõi cho các thương hiệu hàng đầu thế giới.</p>
-            
-            <div class="parent-info">
-                <p class="ko"><strong>모회사 시너지:</strong> 한국 코스닥 상장사인 <strong>(주)ES큐브(www.escube.co.kr)</strong>의 텐트 및 아웃도어 전문 기술 표준을 그대로 적용하여 완벽한 신뢰성을 보장합니다.</p>
-                <p class="en"><strong>Parent Company Synergy:</strong> We ensure absolute product reliability by strictly implementing the engineering standards of <strong>ES CUBE Co., Ltd. (www.escube.co.kr)</strong>, a KOSDAQ-listed company in South Korea.</p>
-                <p class="vn"><strong>Hợp lực cùng Công ty mẹ:</strong> Chúng tôi đảm bảo độ tin cậy tuyệt đối của sản phẩm bằng cách áp dụng nghiêm ngặt các tiêu chuẩn kỹ thuật chuyên nghiệp về lều và thiết bị ngoài trời của <strong>ES CUBE Co., Ltd. (www.escube.co.kr)</strong>, một công ty niêm yết trên thị trường KOSDAQ Hàn Quốc.</p>
+            <div class="about-video-wrapper" onclick="toggleVideoSound(this)">
+                <iframe id="player-iframe" src="https://www.youtube.com/embed/xbb4SDe-XvM?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=xbb4SDe-XvM&controls=0&showinfo=0&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <div class="video-overlay-hint" id="video-hint">
+                    <span>🔊 Click to unmute (50% Vol)</span>
+                </div>
             </div>
         </div>
-        
-        <!-- 우측 단일 공장 조감도: 이 사진 하나만 노출되며, 클릭 시 화면 전체에 시네마 팝업이 뜹니다 -->
-        <div class="about-img" onclick="openCinemaVideo()" style="flex: 1; height: 380px; background: url('https://i.ibb.co/MxVVjdzy/factory-outline.jpg') no-repeat center center/cover; border-radius: 8px; cursor: pointer; position: relative; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
-            <!-- 마우스 올렸을 때 비디오 재생이 가능함을 직관적으로 보여주는 어두운 오버레이와 재생 아이콘 -->
-            <div class="play-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=0">
-                <div style="color: #fff; font-size: 55px; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.3));">▶</div>
-            </div>
-        </div>
-    
-    </div>
-    
-        <!-- [시네마 레이아웃 개편] 전체 암막 대신 회사 개요 크기(빨간박스)로 맞추고 내부 영상 화면은 최대로 확대 -->
-        <div id="cinemaModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center;">
-        
-        <!-- 실제 영상이 배치되는 핵심 시네마 스크린 박스 (16:9 황금 비율 적용으로 내부 영상 여백 완전 제거) -->
-        <div style="width: 90%; max-width: 960px; aspect-ratio: 16 / 9; background: #000; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border-radius: 8px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1);">
-            
-            <!-- 우측 상단 딱 떨어지는 세련된 닫기 버튼 -->
-            <button onclick="closeCinemaVideo()" style="position: absolute; top: 15px; right: 20px; background: rgba(0,0,0,0.5); border: none; color: #fff; font-size: 30px; line-height: 1; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10000; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">&times;</button>
-            
-            <!-- 유튜브 영상 전용 컨테이너 (width/height 100% 가득 채움) -->
-            <div id="cinemaPlayer" style="width: 100%; height: 100%;"></div>
-            
-        </div>
-    </div>
+    </section>
 
-    <section id="products" style="border-top: 1px solid #eee;">
-        <h2 class="ko">주요 제품 라인업</h2><h2 class="en">Our Product Lines</h2><h2 class="vn">Danh Mục Sản Phẩm Chính</h2>
-        <p class="section-desc ko">엄격한 공정 관리를 통해 탄생한 완벽한 아웃도어 기어</p>
-        <p class="section-desc en">Flawless outdoor gear crafted through rigorous process control</p>
-        <p class="section-desc vn">Thiết bị ngoài trời hoàn hảo được chế tác qua quy trình kiểm soát nghiêm ngặt</p>
+    <section id="products">
+        <h2 class="ko">제품 라인업</h2><h2 class="en">Product Lineup</h2><h2 class="vn">Danh mục sản phẩm</h2>
+        <p class="section-desc ko">글로벌 규격에 맞추어 엄격한 검증을 통과한 주요 제품군을 소개합니다.</p>
+        <p class="section-desc en">Introducing our core product portfolios built to satisfy global criteria.</p>
+        <p class="section-desc vn">Giới thiệu các dòng sản phẩm cốt lõi đạt tiêu chuẩn kiểm định toàn cầu.</p>
         
         <div class="grid-3">
             <div class="prod-card">
-                <div class="prod-slider-container">
-                    <button class="slider-btn btn-prev" onclick="moveSlider(this, -1)">‹</button>
+                <div class="prod-slider-container" id="slider-family">
+                    <button class="slider-btn btn-prev" onclick="moveSlider('slider-family', -1)">&#139;</button>
+                    <button class="slider-btn btn-next" onclick="moveSlider('slider-family', 1)">&#155;</button>
                     <div class="prod-slider-track">
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/Bb0skpZ/family-tent-snow-peak-LNSDome.webp');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/Y7nncbPN/family-tent-snow-peak-LNSDome2.png');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/278jdcG7/family-tent-snow-peak-LNS3.png');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/NdsGj6hM/family-tent-snow-peak-LNS.png');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/WWKCbXtb/family-tent-snow-peak-LNS2.webp');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/S7VLsr1b/family-tent-snow-peak-LNS3.webp');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/8DZTdKbp/family-tent-snow-peak-LNS4.jpg');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/spn9vTCg/family-tent-snow-peak-LNSDome.webp');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/4nKL4p1s/family-tent-snow-peak-LNSDome2.webp');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/60yw9Tt4/family-tent-snow-peak-LNSDome3.webp');"></div>
                     </div>
-                    <button class="slider-btn btn-next" onclick="moveSlider(this, 1)">›</button>
                 </div>
                 <div class="prod-info">
-                    <h4 class="ko">가족용 캠핑 텐트</h4><h4 class="en">Family Camping Tents</h4><h4 class="vn">Lều Cắm Trại Gia Đình</h4>
-                    <p class="ko">넓은 공간감과 거주성을 극대화한 거실형 텐트 및 돔 텐트 라인업입니다.</p>
-                    <p class="en">Spacious and high-comfort living-room tents and dome tents for family camping.</p>
-                    <p class="vn">Dòng sản phẩm lều phòng khách và lều vòm tối ưu hóa không gian rộng rãi và sự tiện nghi cho gia đình.</p>
+                    <h4 class="ko">가족용 캠핑 텐트</h4><h4 class="en">Family Camping Tents</h4><h4 class="vn">Lều cắm trại gia đình</h4>
+                    <p class="ko">거실형 리빙쉘 및 대형 돔 구조를 기반으로 거주성과 쾌적한 공간감을 극대화한 오토캠핑 맞춤형 라인업입니다.</p>
+                    <p class="en">Premium auto-camping lineup maximizing living space, comfort, and durability with spacious dome structures.</p>
+                    <p class="vn">Dòng sản phẩm cao cấp tối ưu không gian sống, mang lại sự thoải mái và độ bền vượt trội.</p>
                 </div>
             </div>
 
             <div class="prod-card">
-                <div class="prod-slider-container">
-                    <button class="slider-btn btn-prev" onclick="moveSlider(this, -1)">‹</button>
+                <div class="prod-slider-container" id="slider-alpine">
+                    <button class="slider-btn btn-prev" onclick="moveSlider('slider-alpine', -1)">&#139;</button>
+                    <button class="slider-btn btn-next" onclick="moveSlider('slider-alpine', 1)">&#155;</button>
                     <div class="prod-slider-track">
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/M5Kk20WL/Lightweight-tent-hogback.jpg');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/kVkFN2Ht/Lightweight-tent-meso.jpg');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/PsD0r5wX/lightweight-tent-Meso.webp');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/xS6xsTJQ/Lightweight-tent-moment.jpg');"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/932Lwqs3/Lightweight-tent-protrek.jpg');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/N2fn1FnR/LNS-DOME-M2.png');"></div>
                     </div>
-                    <button class="slider-btn btn-next" onclick="moveSlider(this, 1)">›</button>
                 </div>
                 <div class="prod-info">
-                    <h4 class="ko">전문가용 알파인 텐트</h4><h4 class="en">Alpine & Backpacking</h4><h4 class="vn">Lều Alpine Chuyên Nghiệp</h4>
-                    <p class="ko">경량화와 거친 환경에서의 내구성을 초점에 둔 백패킹 전문가용 제품입니다.</p>
-                    <p class="en">Ultra-lightweight and durable structures engineered for harsh weather conditions.</p>
-                    <p class="vn">Sản phẩm chuyên dụng cho leo núi dã ngoại, tập trung vào trọng lượng siêu nhẹ và độ bền trong môi trường khắc nghiệt.</p>
+                    <h4 class="ko">전문가용 알파인 텐트</h4><h4 class="en">Alpine & Backpacking Tents</h4><h4 class="vn">Lều dã ngoại chuyên nghiệp</h4>
+                    <p class="ko">백패킹과 고산 등반에 최적화된 초경량 원단 공정과 탁월한 방풍·방수 설계의 고기능성 테크니컬 제품입니다.</p>
+                    <p class="en">Ultra-lightweight fabrics engineered with maximum windproof and waterproof capacities for extreme mountaineering.</p>
+                    <p class="vn">Sử dụng vải siêu nhẹ với khả năng chống gió và kháng nước tối đa cho leo núi chuyên nghiệp.</p>
                 </div>
             </div>
 
             <div class="prod-card">
-                <div class="prod-slider-container">
-                    <button class="slider-btn btn-prev" onclick="moveSlider(this, -1)">‹</button>
+                <div class="prod-slider-container" id="slider-tarp">
+                    <button class="slider-btn btn-prev" onclick="moveSlider('slider-tarp', -1)">&#139;</button>
+                    <button class="slider-btn btn-next" onclick="moveSlider('slider-tarp', 1)">&#155;</button>
                     <div class="prod-slider-track">
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/dsK20cg6/tarp-OGW-Car.png');"></div>
-                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/7xWdv3mh/Tarp-OGW.jpg');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/Kp3FPZnM/tarp-OGW-Car.webp');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/7xWdv3mh/Tarp-Open-GW.jpg');"></div>
+                        <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/93w0V5hd/Tarp-takibi.webp'); background-size: contain; background-color: #f0f2f5;"></div>
                         <div class="prod-slider-slide" style="background-image: url('https://i.ibb.co/xtgvTpjB/Tarp.jpg');"></div>
                     </div>
-                    <button class="slider-btn btn-next" onclick="moveSlider(this, 1)">›</button>
                 </div>
                 <div class="prod-info">
-                    <h4 class="ko">레저용 그늘막 / 타프</h4><h4 class="en">Leisure Tarps & Sunshades</h4><h4 class="vn">Tấm Tăng / Mái Che Giải Trí</h4>
-                    <p class="ko">우수한 자외선 차단 및 방수 성능을 갖춘 야외 활동용 그늘막 제품군입니다.</p>
-                    <p class="en">Premium UV protection and high-waterproof performance for all outdoor events.</p>
-                    <p class="vn">Dòng sản phẩm mái che dã ngoại với khả năng chống tia cực tím xuất sắc và hiệu suất chống thấm nước cao.</p>
+                    <h4 class="ko">레저용 그늘막 / 타프</h4><h4 class="en">Leisure Tarps & Sunshades</h4><h4 class="vn">Mái che thông dụng dã ngoại</h4>
+                    <p class="ko">자외선 차단 특수 코팅 가공과 수려한 곡선의 인장력 설계를 매칭하여 완벽한 그늘 공간을 선사합니다.</p>
+                    <p class="en">Featuring specialized anti-UV coatings and streamlined aerodynamic tension design for complete open-air shading.</p>
+                    <p class="vn">Trang bị lớp phủ chống tia UV chuyên dụng kết hợp cùng kết cấu chịu lực khí động học hoàn hảo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 생산 인프라 섹션 (가로형 박스 정렬 + 지정 이미지 3종 배경 + 부드러운 60% 차콜 그레이 커스텀 배경 유지) -->
     <section id="infrastructure" class="infra-bg">
         <h2 class="ko">생산 인프라 및 핵심 역량</h2>
         <h2 class="en">Manufacturing Infrastructure</h2>
-        <h2 class="vn">Cơ Sở Hạ Tầng Sản Xuất & Năng Lực Cốt Lõi</h2>
-        <p class="section-desc ko">글로벌 스탠다드를 충족하는 체계적인 베트남 현지 공장 인프라와 검증된 제조 역량</p>
+        <h2 class="vn">Cơ sở hạ tầng và Năng lực lõi</h2>
+        <p class="section-desc ko">글로벌 스탠다드를 충족하는 체계적인 베트남 현지 공장 인프라</p>
         <p class="section-desc en">Vietnam factory infrastructure optimized to satisfy global industry standards</p>
-        <p class="section-desc vn">Cơ sở hạ tầng nhà máy tại Việt Nam được tối ưu hóa đáp ứng các tiêu chuẩn khắt khe toàn cầu</p>
+        <p class="section-desc vn">Hệ thống nhà máy tại Việt Nam được tối ưu hóa để đáp ứng các tiêu chuẩn công nghiệp toàn cầu</p>
         
-        <div class="grid-3">
-            <!-- 카드 1. 글로벌 시장 생산 경험 -->
-            <div class="infra-card" style="background: linear-gradient(rgba(44, 62, 80, 0.6), rgba(44, 62, 80, 0.6)), url('https://i.ibb.co/kVFz9wxs/Factory-inside-1.jpg') no-repeat center center/cover; color: #fff; border-top: 3px solid #00b86b;">
-                <h4 class="ko" style="color: #fff;">글로벌 시장 생산 경험</h4>
-                <h4 class="en" style="color: #fff;">Global Manufacturing Experience</h4>
-                <h4 class="vn" style="color: #fff;">Kinh Nghiệm Sản Xuất Toàn Cầu</h4>
-                <p class="ko" style="color: #fff; margin: 5px 0;"><strong>아시아·유럽·미주 바이어 협업:</strong> 폭넓은 B2B 생산 경험을 바탕으로 세계적 수준의 품질 기준과 제조 규격을 완벽히 충족합니다.</p>
-                <p class="en" style="color: #eee; margin: 5px 0;"><strong>Asia, Europe & Americas:</strong> Proven track record of B2B collaboration, consistently meeting rigorous world-class quality standards.</p>
-                <p class="vn" style="color: #eee; margin: 5px 0;"><strong>Châu Á, Châu Âu & Châu Mỹ:</strong> Với kinh nghiệm sản xuất B2B phong phú, chúng tôi đáp ứng hoàn hảo các tiêu chuẩn kỹ thuật khắt khe nhất.</p>
+        <div class="infra-grid-3">
+            <div class="infra-custom-card" style="background-image: url('https://i.ibb.co/kVFz9wxs/Factory-inside-1.jpg');">
+                <h4 class="ko">🌐 글로벌 생산 경험</h4>
+                <h4 class="en">🌐 Global Market Experience</h4>
+                <h4 class="vn">🌐 Kinh nghiệm toàn cầu</h4>
+                <p class="ko"><strong>아시아, 유럽 그리고 미주까지</strong> 폭넓은 글로벌 주요 시장 바이어들과의 풍부한 오리지널 생산 협업 커리어를 보유하여 다국적 요구 규격을 능숙히 충족합니다.</p>
+                <p class="en">Extensive production track record spanning across <strong>Asia, Europe, and the Americas</strong>, perfectly complying with various multinational requirements.</p>
+                <p class="vn">Năng lực sản xuất vững chắc trải dài từ <strong>Châu Á, Châu Âu đến Châu Mỹ</strong>, đáp ứng hoàn hảo các yêu cầu quy chuẩn đa quốc gia.</p>
             </div>
-            
-            <!-- 카드 2. 글로벌 퀄리티 컨트롤 -->
-            <div class="infra-card" style="background: linear-gradient(rgba(44, 62, 80, 0.6), rgba(44, 62, 80, 0.6)), url('https://i.ibb.co/6R3VBPJ7/quality-control.avif') no-repeat center center/cover; color: #fff; border-top: 3px solid #00b86b;">
-                <h4 class="ko" style="color: #fff;">글로벌 퀄리티 컨트롤</h4>
-                <h4 class="en" style="color: #fff;">Rigorous Quality Audit</h4>
-                <h4 class="vn" style="color: #fff;">Kiểm Soát Chất Lượng Quốc Tế</h4>
-                <p class="ko" style="color: #fff; margin: 5px 0;"><strong>전수 피칭(Tent Pitching) 검사:</strong> 원사 인장 강도 테스트부터 최종 패킹 전 전수 피칭 검사까지 단계별 품질 검증 프로세스를 통과합니다.</p>
-                <p class="en" style="color: #eee; margin: 5px 0;"><strong>100% Full Pitching Audits:</strong> From fabric tensile strength testing to full tent pitching audits before final packing, quality is ensured.</p>
-                <p class="vn" style="color: #eee; margin: 5px 0;"><strong>Kiểm tra dựng lều thực tế 100%:</strong> Quy trình nghiêm ngặt từng bước, từ thử nghiệm độ bền kéo đến dựng thử toàn bộ lều trước khi đóng gói.</p>
+
+            <div class="infra-custom-card" style="background-image: url('https://i.ibb.co/6R3VBPJ7/quality-control.avif');">
+                <h4 class="ko">🔍 엄격한 품질 검증</h4>
+                <h4 class="en">🔍 Global Quality Control</h4>
+                <h4 class="vn">🔍 Kiểm soát chất lượng b2b</h4>
+                <p class="ko"><strong>고주파 심실링 공정</strong> 및 원단 결점 추적, 양산 전 완제품 <strong>전수 피칭 테스트</strong> 체계를 가동하여 봉제선의 결점 없는 완벽한 방수와 균일 완성도를 보장합니다.</p>
+                <p class="en">Operating high-frequency seam sealing and <strong>100% full-pitching test</strong> protocols beforehand to eliminate leaks and maintain consistency.</p>
+                <p class="vn">Vận hành quy trình ép seam cao tần và <strong>kiểm tra dựng lều toàn phần 100%</strong> trước khi xuất xưởng nhằm loại bỏ hoàn toàn rò rỉ.</p>
             </div>
-            
-            <!-- 카드 3. 전략적 물류 거점 -->
-            <div class="infra-card" style="background: linear-gradient(rgba(44, 62, 80, 0.6), rgba(44, 62, 80, 0.6)), url('https://i.ibb.co/bjN9PqcC/global-logistics-transportation-network-23-2152005448.avif') no-repeat center center/cover; color: #fff; border-top: 3px solid #00b86b;">
-                <h4 class="ko" style="color: #fff;">전략적 물류 거점</h4>
-                <h4 class="en" style="color: #fff;">Strategic Export Logistics</h4>
-                <h4 class="vn" style="color: #fff;">Vị Trí Logistic Chiến Lược</h4>
-                <p class="ko" style="color: #fff; margin: 5px 0;"><strong>해상 수출 최적화 거점:</strong> 베트남 빈증성 바우방 산업단지에 위치하여 호치민 항구를 통해 북미, 유럽, 일본, 한국 등으로 신속한 수출이 가능합니다.</p>
-                <p class="en" style="color: #eee; margin: 5px 0;"><strong>Strategic Logistics Hub:</strong> Located in Bau Bang IP, Binh Duong, enabling fast shipping to the US, Europe, Japan and Korea via Ho Chi Minh ports.</p>
-                <p class="vn" style="color: #eee; margin: 5px 0;"><strong>Tối ưu hóa xuất khẩu đường biển:</strong> Tọa lạc tại KCN Bàu Bàng, Bình Dương, giúp xuất khẩu nhanh chóng sang Bắc Mỹ, Châu Âu, Korea và Hàn Quốc.</p>
+
+            <div class="infra-custom-card" style="background-image: url('https://i.ibb.co/bjN9PqcC/global-logistics-transportation-network-23-2152005448.avif');">
+                <h4 class="ko">📍 전략적 물류 거점</h4>
+                <h4 class="en">📍 Strategic Logistics Hub</h4>
+                <h4 class="vn">📍 Vị trí chiến lược thuận lợi</h4>
+                <p class="ko">베트남 <strong>빈증성 바우방 산업단지</strong>에 위치하여 호치민 주요 항만과 인접해 있으며, 대형 컨테이너 해상 선적 및 원자재 공급망 연계에 <strong>최적화된 해상 수출 거점</strong>을 자랑합니다.</p>
+                <p class="en">Located in <strong>Bau Bang IP, Binh Duong Province</strong> with excellent accessibility to main seaports, ensuring reliable container sea freights.</p>
+                <p class="vn">Tọa lạc tại <strong>KCN Bàu Bàng, Tỉnh Bình Dương</strong> với khả năng kết nối tuyệt vời đến các cảng biển lớn, đảm bảo vận tải container đường biển.</p>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <h2 class="ko">비즈니스 문의</h2><h2 class="en">Contact For Inquiry</h2><h2 class="vn">Liên Hệ Tư Vấn</h2>
-        <p class="section-desc ko">글로벌 소싱 및 생산 파트너십 제안을 환영합니다.</p>
-        <p class="section-desc en">We welcome your global sourcing and production partnership inquiries.</p>
-        <p class="section-desc vn">Chúng tôi hoan nghênh các đề xuất hợp tác sản xuất và cung ứng toàn cầu.</p>
+        <h2 class="ko">비즈니스 문의</h2><h2 class="en">Contact Us</h2><h2 class="vn">Liên hệ với chúng tôi</h2>
+        <p class="section-desc ko">신속하고 정확한 B2B 바이어 지원을 약속드립니다.</p>
+        <p class="section-desc en">We guarantee responsive support for your prospective business inquiries.</p>
+        <p class="section-desc vn">Chúng tôi cam kết hỗ trợ phản hồi nhanh chóng cho các yêu cầu hợp tác.</p>
         
         <div class="contact-wrapper">
             <div class="contact-info">
-                <h3>T.O.P OUTDOOR VINA CO., LTD.</h3>
-                <p><strong>📍 <span class="ko">공장 주소</span><span class="en">Factory Address</span><span class="vn">Địa chỉ nhà máy</span>:</strong><br>
-                Lot A-6A2-CN, Bau Bang Industrial Park, Bau Bang Commune, Binh Duong Province, Vietnam</p>
-                <p><strong>📞 Tel:</strong> +84 (0)274 3803 709</p>
-        
-                <p><strong>✉️ Inquiry:</strong><br>
-                <span class="ko">우측의 온라인 문의 양식을 작성해 부서별로 전송해 주세요.</span>
-                <span class="en">Please use the online form on the right to submit your inquiry.</span>
-                <span class="vn">Vui lòng sử dụng biểu mẫu trực tuyến bên phải để gửi yêu cầu.</span></p>
+                <h3 class="ko">T.O.P OUTDOOR VINA CO., LTD.</h3>
+                <h3 class="en">T.O.P OUTDOOR VINA CO., LTD.</h3>
+                <h3 class="vn">T.O.P OUTDOOR VINA CO., LTD.</h3>
+                <br>
+                <p class="ko">📍 <strong>공장 주소:</strong> 베트남 호치민 바우방 산업단지 A-6A2-CN 필지</p>
+                <p class="en">📍 <strong>Factory Address:</strong> Lot A-6A2-CN, Bau Bang Industrial Park, Bau Bang Commune, Ho Chi Minh City, Vietnam</p>
+                <p class="vn">📍 <strong>Địa chỉ nhà máy:</strong> Lô A-6A2-CN, Khu Công Nghiệp Bàu Bàng, Xã Bàu Bàng, Thành Phố Hồ Chí Minh</p>
+                <p>📞 <strong>Tel:</strong> +84 (0)274 3803 709</p>
             </div>
-    
-            <form class="contact-form" action="https://formspree.io/f/xdarrzzz" method="POST">
-    
-                <input type="text" name="company_name" placeholder="Company Name / 회사명 / Tên công ty" required>
-                
-                <select name="department" required style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background-color: #fff; color: #555; font-family: inherit; cursor: pointer;">
-                    <option value="" disabled selected>Select Contact Department / 문의 부서 선택 / Chọn bộ phận liên hệ</option>
-                    <option value="Sales Team">[Sales Team] International B2B Inquiry / 글로벌 영업부 B2B 문의</option>
-                    <option value="General Support">[General Support] General & Logistics Inquiry / 일반 및 물류 제휴 문의</option>
-                </select>
-                
-                <input type="email" name="email" placeholder="Buyer's Email Address / 답장받을 이메일 주소" required>
-                
-                <textarea rows="5" name="message" placeholder="Inquiry Details / 문의 내용 / Nội dung liên hệ (e.g., Target Quantity, Specs)" required></textarea>
-                
-                <button type="submit">
-                    <span class="ko">문의 보내기</span><span class="en">Submit Inquiry</span><span class="vn">Gửi yêu cầu</span>
-                </button>
-            </form>
+            
+            <div class="contact-form-container" style="flex: 1;">
+                <form class="contact-form" onsubmit="alert('Thank you for your inquiry.'); return false;">
+                    <select id="department-select" required>
+                        <option value="" disabled selected class="ko">--- 문의하실 부서를 선택하세요 ---</option>
+                        <option value="" disabled selected class="en">--- Select Department ---</option>
+                        <option value="" disabled selected class="vn">--- Vui lòng chọn bộ phận nhận ---</option>
+                        <option value="sales" class="ko">해외영업부 (Sales Department)</option>
+                        <option value="sales" class="en">Sales Department</option>
+                        <option value="sales" class="vn">Bộ phận Kinh doanh Quốc tế</option>
+                        <option value="info" class="ko">기타 일반문의 (General Inquiries)</option>
+                        <option value="info" class="en">General Inquiries</option>
+                        <option value="info" class="vn">Hỗ trợ Thông tin chung</option>
+                    </select>
+                    
+                    <input type="text" placeholder="Company Name" required>
+                    <input type="text" placeholder="Your Name" required>
+                    <textarea rows="5" placeholder="Message" required></textarea>
+                    
+                    <button type="submit" class="ko">문의 보내기</button>
+                    <button type="submit" class="en">Send Message</button>
+                    <button type="submit" class="vn">Gửi tin nhắn</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <section class="partners-section">
-        <h2 class="ko">주요 파트너사</h2><h2 class="en">Our Partners</h2><h2 class="vn">Đối Tác Chính</h2>
+    <div class="partners-section">
         <div class="logo-slider">
             <div class="logo-track">
-                <div class="slide"><img src="https://i.ibb.co/99Wg04LW/snow-peak.png" alt="Snow Peak"></div>
-                <div class="slide"><img src="https://i.ibb.co/TMHGp4nH/Helinox.jpg" alt="Helinox"></div>
-                <div class="slide"><img src="https://i.ibb.co/LdG7hJQy/MEC.png" alt="MEC"></div>
-                <div class="slide"><img src="https://i.ibb.co/V0PXLXwD/OGAWA.png" alt="OGAWA"></div>
-                <div class="slide"><img src="https://i.ibb.co/Z6ywL7c7/revolve-logotm-660x.webp" alt="Revolve"></div>
-                <div class="slide"><img src="https://i.ibb.co/bRRqt7PV/Tarptent.png" alt="Tarptent"></div>
                 <div class="slide"><img src="https://i.ibb.co/ds96QbjY/gossamer-gear.png" alt="Gossamer Gear"></div>
-                <div class="slide"><img src="https://i.ibb.co/Hfs0Qx65/terranova.png" alt="Terra Nova"></div>
-
-                <div class="slide"><img src="https://i.ibb.co/99Wg04LW/snow-peak.png" alt="Snow Peak"></div>
                 <div class="slide"><img src="https://i.ibb.co/TMHGp4nH/Helinox.jpg" alt="Helinox"></div>
+                <div class="slide"><img src="https://i.ibb.co/DDPnP6kQ/LNS-DOME-M2.png" alt="LNS Dome"></div>
                 <div class="slide"><img src="https://i.ibb.co/LdG7hJQy/MEC.png" alt="MEC"></div>
-                <div class="slide"><img src="https://i.ibb.co/V0PXLXwD/OGAWA.png" alt="OGAWA"></div>
+                <div class="slide"><img src="https://i.ibb.co/V0PXLXwD/OGAWA.png" alt="Ogawa"></div>
                 <div class="slide"><img src="https://i.ibb.co/Z6ywL7c7/revolve-logotm-660x.webp" alt="Revolve"></div>
-                <div class="slide"><img src="https://i.ibb.co/ds96QbjY/gossamer-gear.png" alt="Gossamer Gear"></div>
+                <div class="slide"><img src="https://i.ibb.co/99Wg04LW/snow-peak.png" alt="Snow Peak"></div>
                 <div class="slide"><img src="https://i.ibb.co/bRRqt7PV/Tarptent.png" alt="Tarptent"></div>
-                <div class="slide"><img src="https://i.ibb.co/Hfs0Qx65/terranova.png" alt="Terra Nova"></div>
+                
+                <div class="slide"><img src="https://i.ibb.co/ds96QbjY/gossamer-gear.png" alt="Gossamer Gear"></div>
+                <div class="slide"><img src="https://i.ibb.co/TMHGp4nH/Helinox.jpg" alt="Helinox"></div>
+                <div class="slide"><img src="https://i.ibb.co/DDPnP6kQ/LNS-DOME-M2.png" alt="LNS Dome"></div>
+                <div class="slide"><img src="https://i.ibb.co/LdG7hJQy/MEC.png" alt="MEC"></div>
+                <div class="slide"><img src="https://i.ibb.co/V0PXLXwD/OGAWA.png" alt="Ogawa"></div>
+                <div class="slide"><img src="https://i.ibb.co/Z6ywL7c7/revolve-logotm-660x.webp" alt="Revolve"></div>
+                <div class="slide"><img src="https://i.ibb.co/99Wg04LW/snow-peak.png" alt="Snow Peak"></div>
+                <div class="slide"><img src="https://i.ibb.co/bRRqt7PV/Tarptent.png" alt="Tarptent"></div>
             </div>
         </div>
-    </section>
+    </div>
 
     <footer>
         <div class="footer-cols">
             <div class="footer-col">
                 <h5>T.O.P Outdoor Vina</h5>
-                <p style="color: #95a5a6; max-width: 300px;">
-                    <span class="ko">글로벌 아웃도어 시장의 든든한 생산 기지로서 최고의 가치를 제공합니다.</span>
-                    <span class="en">Providing supreme manufacturing value as your reliable outdoor production base.</span>
-                    <span class="vn">Cung cấp giá trị sản xuất cao nhất với tư cách là cơ sở sản xuất lều trại đáng tin cậy của bạn.</span>
-                </p>
+                <p class="ko">최상의 퀄리티와 파트너십을 최우선으로 생각합니다.</p>
+                <p class="en">We prioritize supreme engineering values and global trust.</p>
+                <p class="vn">Chúng tôi đặt chất lượng và chữ tín lên hàng đầu.</p>
             </div>
             <div class="footer-col">
-                <h5>Parent Company</h5>
-                <p><a href="http://www.escube.co.kr" target="_blank" style="color: #e74c3c; font-weight: bold;">ES CUBE Co., Ltd. 🌐</a></p>
-                <p style="color: #95a5a6; margin-top: 5px;">KOSDAQ: 050120</p>
+                <h5>Headquarters</h5>
+                <p class="ko">대한민국 서울시 강남구 테헤란로 (모회사 주식회사 ES큐브)</p>
+                <p class="en">Teheran-ro, Gangnam-gu, Seoul, South Korea (ESCUBE Co., Ltd.)</p>
+                <p class="vn">Teheran-ro, Gangnam-gu, Seoul, Hàn Quốc (Công ty mẹ ESCUBE)</p>
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 T.O.P Outdoor Vina Co., Ltd. All rights reserved.
+            <p>&copy; 2026 T.O.P Outdoor Vina Co., Ltd. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // 3개국어 제어 엔진 스크립트 (VN 매칭)
+        /* 1. 다국어 엔진 */
         function setLanguage(lang) {
-            const languages = ['ko', 'en', 'vn'];
-            
-            languages.forEach(l => {
-                const btn = document.getElementById('btn-' + l);
-                if (btn) {
-                    if (l === lang) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
+            document.body.className = 'lang-' + lang;
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                if(btn.innerText.toLowerCase() === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
                 }
             });
-
-            document.body.className = 'lang-' + lang;
-            document.documentElement.lang = lang;
+            const selectBox = document.getElementById('department-select');
+            if(selectBox) { selectBox.value = ""; }
         }
 
-        // 제품별 이미지 슬라이더 조작 기능
-        function moveSlider(button, direction) {
-            const container = button.parentElement;
+        /* 2. 제품 슬라이더 제어 */
+        const sliderPositions = { 'slider-family': 0, 'slider-alpine': 0, 'slider-tarp': 0 };
+        function moveSlider(sliderId, direction) {
+            const container = document.getElementById(sliderId);
             const track = container.querySelector('.prod-slider-track');
-            const slides = track.querySelectorAll('.prod-slider-slide');
-            const slideCount = slides.length;
+            const slidesCount = track.querySelectorAll('.prod-slider-slide').length;
             
-            let currentIndex = parseInt(track.getAttribute('data-index') || '0');
+            let currentIdx = sliderPositions[sliderId] + direction;
+            if (currentIdx < 0) { currentIdx = slidesCount - 1; }
+            if (currentIdx >= slidesCount) { currentIdx = 0; }
             
-            currentIndex += direction;
-            if (currentIndex < 0) {
-                currentIndex = slideCount - 1;
-            } else if (currentIndex >= slideCount) {
-                currentIndex = 0;
-            }
-            
-            track.setAttribute('data-index', currentIndex);
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-    </script>
-        <!-- ==========================================================================
-       [시네마 팝업 절대 구동 엔진] 파일 최하단 </body> 바로 위에 붙여넣으세요.
-       ========================================================================== -->
-    <script>
-        // 1. 유튜브 iFrame API 비동기 자동 로드 (링크 활성화 엔진)
-        if (!window.YT) {
-            var tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            var firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            sliderPositions[sliderId] = currentIdx;
+            track.style.transform = `translateX(-${currentIdx * 100}%)`;
         }
 
-        let cinemaPlayer;
-        function onYouTubeIframeAPIReady() {
-            // API 스탠바이 (오류 방지용 공백 유지)
-        }
-
-        // 2. 시네마 팝업 열기 + 영상 로드 + 볼륨 50% 지정 함수
-        function openCinemaVideo() {
-            // 암막 모달창 표시
-            const modal = document.getElementById('cinemaModal');
-            if (modal) modal.style.display = 'flex';
+        /* 3. 홍보 비디오 스마트 음량 컨트롤 */
+        let isMuted = true;
+        function toggleVideoSound(element) {
+            const iframe = document.getElementById('player-iframe');
+            const hint = document.getElementById('video-hint');
             
-            // 본문 스크롤 잠금
-            document.body.style.overflow = 'hidden';
-
-            // 플레이어 생성 및 구동
-            if (!cinemaPlayer) {
-                cinemaPlayer = new YT.Player('cinemaPlayer', {
-                    videoId: 'xbb4SDe-XvM', // 질문자님의 공식 홍보 비디오 ID
-                    playerVars: {
-                        'autoplay': 1,      // 팝업 열리면 자동 재생
-                        'controls': 1,      // 일시정지, 타임바 컨트롤러 표시
-                        'rel': 0,           // 추천 영상 안 뜨게 차단
-                        'modestbranding': 1 // 유튜브 로고 최소화
-                    },
-                    events: {
-                        'onReady': function(event) {
-                            event.target.setVolume(50); // 사운드 볼륨 50% 정밀 고정
-                            event.target.playVideo();
-                        }
-                    }
-                });
+            if (isMuted) {
+                iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+                iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
+                hint.innerHTML = '<span>🔇 Click to mute</span>';
+                isMuted = false;
             } else {
-                // 이미 생성된 적이 있다면 볼륨 50% 맞추고 즉시 재생
-                cinemaPlayer.setVolume(50);
-                cinemaPlayer.playVideo();
+                iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+                hint.innerHTML = '<span>🔊 Click to unmute (50% Vol)</span>';
+                isMuted = true;
             }
         }
-
-        // 3. 시네마 팝업 닫기 + 영상 정지 함수
-        function closeCinemaVideo() {
-            const modal = document.getElementById('cinemaModal');
-            if (modal) modal.style.display = 'none';
-            
-            // 본문 스크롤 잠금 해제
-            document.body.style.overflow = '';
-            
-            // 창을 닫으면 영상 소리가 뒤에서 계속 나는 현상 원천 차단
-            if (cinemaPlayer && typeof cinemaPlayer.pauseVideo === 'function') {
-                cinemaPlayer.pauseVideo();
-            }
-        }
-
-        // 4. 배경 암막 영역을 클릭해도 부드럽게 닫히도록 예외 처리
-        window.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('cinemaModal');
-            if (modal) {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        closeCinemaVideo();
-                    }
-                });
-            }
-        });
     </script>
 </body>
 </html>
