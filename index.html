@@ -14,7 +14,7 @@
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; width: 100%; }
         .logo { font-size: 22px; font-weight: 800; color: #1a252f; letter-spacing: -0.5px; }
         
-        /* [CI 교정 완료] Vina 영역을 브랜드 고유의 초록색 테마로 완벽 지정 */
+        /* [CI 초록색 고정] Vina 문구를 브랜드 고유의 초록색으로 변경 */
         .logo span { color: #2ecc71; }
         
         nav a { margin-left: 30px; font-weight: 500; font-size: 15px; text-decoration: none; transition: color 0.3s; }
@@ -34,7 +34,7 @@
         .hero h1 { font-size: 52px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
         .hero p { font-size: 22px; max-width: 800px; font-weight: 300; color: #f8f9fa; }
 
-        /* 공통 섹션 레이아웃 (전체 가로폭 시원하게 복원) */
+        /* 공통 섹션 레이아웃 (전체 가로폭 시원하게 복원 완료) */
         section { padding: 90px 10%; text-align: center; width: 100%; clear: both; display: block; }
         section h2 { font-size: 34px; margin-bottom: 15px; color: #1a252f; font-weight: 700; }
         .section-desc { font-size: 16px; color: #777; margin-bottom: 60px; }
@@ -47,7 +47,7 @@
         .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; }
         .parent-info { background: #f8f9fa; border-left: 4px solid #2ecc71; padding: 20px; margin-top: 30px; }
         
-        /* 유튜브 플레이어 컨테이너 및 복원된 조감도 백그라운드 포스터 */
+        /* [조감도 포스터 스위치형 플레이어 인프라 보존] */
         .about-video-wrapper { 
             flex: 1; height: 350px; border-radius: 8px; overflow: hidden; 
             box-shadow: 0 8px 20px rgba(0,0,0,0.1); position: relative; 
@@ -56,8 +56,8 @@
         }
         .about-video-wrapper iframe { width: 100%; height: 100%; border: none; opacity: 0; transition: opacity 0.5s ease; }
         .about-video-wrapper.playing iframe { opacity: 1; }
-        .video-overlay-hint { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; transition: opacity 0.3s; z-index: 2; }
-        .video-overlay-hint span { background: rgba(0,0,0,0.7); padding: 10px 20px; border-radius: 4px; font-size: 14px; font-weight: 500; }
+        .video-overlay-hint { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; transition: opacity 0.3s; z-index: 2; }
+        .video-overlay-hint span { background: rgba(0,0,0,0.7.5); padding: 10px 20px; border-radius: 4px; font-size: 14px; font-weight: 500; border: 1px solid rgba(255,255,255,0.2); }
         .about-video-wrapper.playing .video-overlay-hint { opacity: 0; pointer-events: none; }
 
         /* 2. 제품 포트폴리오 3열 그리드 */
@@ -66,7 +66,6 @@
         .prod-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
         .prod-slider-container { position: relative; height: 220px; width: 100%; overflow: hidden; background-color: #ddd; }
         .prod-slider-track { display: flex; height: 100%; width: 100%; transition: transform 0.4s ease-in-out; }
-        
         .prod-slider-slide { flex-shrink: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; }
         
         /* 슬라이더 제어 버튼 */
@@ -78,7 +77,7 @@
         .prod-info h4 { font-size: 18px; margin-bottom: 10px; color: #1a252f; }
         .prod-info p { font-size: 14px; color: #666; }
 
-        /* 3. 인프라 및 설비 (Infrastructure) */
+        /* 3. 인프라 및 설비 (Infrastructure 차콜 60% 투명 틴트 세팅 보존) */
         .infra-bg { background-color: #f9fbfd; }
         .infra-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 20px; width: 100%; }
         .infra-custom-card { position: relative; border-radius: 8px; overflow: hidden; padding: 50px 35px; text-align: left; border-top: 3px solid #2ecc71; min-height: 260px; display: flex; flex-direction: column; justify-content: center; background-size: cover; background-position: center; background-repeat: no-repeat; transition: transform 0.3s, box-shadow 0.3s; z-index: 1; }
@@ -104,12 +103,11 @@
         .logo-slider::after { right: 0; top: 0; background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); }
         .logo-track { display: flex; width: max-content; animation: infiniteScroll 35s linear infinite; }
         .slide { flex-shrink: 0; width: 240px; height: 70px; display: flex; justify-content: center; align-items: center; padding: 0 25px; }
-        
         .slide img { width: auto; height: auto; max-width: 170px; max-height: 60px; min-width: 140px; min-height: 45px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s ease; transform: scale(1.05); }
         .slide img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
         @keyframes infiniteScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* 푸터 영역 */
+        /* 푸터 영역 (완전 너비 고정) */
         footer { background: #1a252f; color: #fff; padding: 50px 10%; font-size: 14px; border-top: 5px solid #2ecc71; position: relative; z-index: 10; width: 100%; clear: both; display: block; }
         .footer-cols { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
         .footer-col { flex: 1; min-width: 250px; }
@@ -147,7 +145,7 @@
     <div class="hero">
         <h1 class="ko">글로벌 프리미엄 텐트 제조사</h1>
         <h1 class="en">Global Premium Tent Manufacturer</h1>
-        <h1 class="vn">Nhà Sản Xuất Lều Cao Cấp Toàn Cầu</h1>
+        <h1 class="vn">Nhà Sản Xuất Lều Cao Cấp Toần Cầu</h1>
         <p class="ko">최고의 기술력과 생산 인프라로 아웃도어 시장을 선도합니다.</p>
         <p class="en">Leading the outdoor market with superior technology and infrastructure.</p>
         <p class="vn">Dẫn đầu thị trường dã ngoại với công nghệ và cơ sở hạ tầng vượt trội.</p>
@@ -170,7 +168,7 @@
                 <p class="vn">T.O.P Outdoor Vina là doanh nghiệp tại Việt Nam chuyên sản xuất thiết bị cắm trại dã ngoại sáng tạo cho các thương hiệu toàn cầu, dựa trên kỹ thuật may độc quyền và quy trình quản lý chất lượng nghiêm ngặt.</p>
                 
                 <div class="parent-info">
-                    <p class="ko"><strong>모회사 정보:</strong> 코스닥 상장사 주식회사 ES큐브 (www.escube.co.kr)의 탄탄한 자본력และ 기술 정체성을 공유하고 있습니다.</p>
+                    <p class="ko"><strong>모회사 정보:</strong> 코스닥 상장사 주식회사 ES큐브 (www.escube.co.kr)의 탄탄한 자본력과 leisure 기술 정체성을 공유하고 있습니다.</p>
                     <p class="en"><strong>Parent Company:</strong> Sharing technical identity and strong financial stability with ESCUBE Co., Ltd. (www.escube.co.kr), listed on KOSDAQ.</p>
                     <p class="vn"><strong>Công ty mẹ:</strong> Kế thừa năng lực tài chính vững mạnh và bản sắc công nghệ dã ngoại từ ESCUBE Co., Ltd. (www.escube.co.kr), niêm yết trên sàn KOSDAQ.</p>
                 </div>
@@ -178,7 +176,7 @@
             
             <div class="about-video-wrapper" id="video-container" onclick="playCompanyVideo()">
                 <div class="video-overlay-hint" id="video-hint">
-                    <span>▶ 조감도 보기 / 영상 재생 (🔊 50% Vol)</span>
+                    <span>▶ 공장 조감도 / 홍보영상 재생 (🔊 50% Vol)</span>
                 </div>
                 <iframe id="player-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
@@ -278,8 +276,8 @@
                 <h4 class="ko">🔍 엄격한 품질 검증</h4>
                 <h4 class="en">🔍 Global Quality Control</h4>
                 <h4 class="vn">🔍 Kiểm soát chất lượng b2b</h4>
-                <p class="ko"><strong>고주파 심실링 공정</strong> 및 원단 결점 추적, 양산 전 완제품 <strong>전수 피칭 테스트</strong> 체계를 가동하여 봉제선의 결점 없는 완벽한 방수와 균일 완성도를 보장합니다.</p>
-                <p class="en">Operating high-frequency seam sealing and <strong>100% full-pitching test</strong> protocols beforehand to eliminate leaks and maintain consistency.</p>
+                <p class="ko"><strong>고주파 심실링 공정</strong> 및 원단 연단기 가동, 양산 전 완제품 <strong>전수 피칭 테스트</strong> 체계를 통해 봉제선의 결점 없는 완벽한 방수와 균일 완성도를 보장합니다.</p>
+                <p class="en">Operating automatic spreading, high-frequency seam sealing and <strong>100% full-pitching test</strong> protocols beforehand to maintain consistency.</p>
                 <p class="vn">Vận hành quy trình ép seam cao tần và <strong>kiểm tra dựng lều toàn phần 100%</strong> trước khi xuất xưởng nhằm loại bỏ hoàn toàn rò rỉ.</p>
             </div>
 
@@ -413,17 +411,15 @@
             track.style.transform = `translateX(-${currentIdx * 100}%)`;
         }
 
-        /* [비디오 로직 복원] 평소엔 조감도 포스터 노출 -> 클릭 시 50% 볼륨으로 온디맨드 로드/재생 */
+        /* 3. [비디오 로직 보존] 조감도 보기 -> 클릭 시 50% 볼륨 영구 로드 재생 */
         function playCompanyVideo() {
             const container = document.getElementById('video-container');
             const iframe = document.getElementById('player-iframe');
             
             if (!container.classList.contains('playing')) {
-                // 클릭하는 순간 유튜브 스트리밍 소스를 소리(unmute) 및 50% 볼륨 플래그와 함께 동적 주입
                 iframe.src = "https://www.youtube.com/embed/xbb4SDe-XvM?autoplay=1&mute=0&controls=1&rel=0";
                 container.classList.add('playing');
                 
-                // 유튜브 플레이어 볼륨 조정을 위한 대기 API 전송
                 setTimeout(() => {
                     iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
                 }, 1000);
