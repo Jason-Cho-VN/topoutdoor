@@ -13,15 +13,18 @@
         /* 헤더 & 네비게이션 */
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; width: 100%; }
         .logo { font-size: 22px; font-weight: 800; color: #1a252f; letter-spacing: -0.5px; }
-        .logo span { color: #e74c3c; }
+        
+        /* [CI 교정 완료] Vina 영역을 브랜드 고유의 초록색 테마로 완벽 지정 */
+        .logo span { color: #2ecc71; }
+        
         nav a { margin-left: 30px; font-weight: 500; font-size: 15px; text-decoration: none; transition: color 0.3s; }
-        nav a:hover { color: #e74c3c; }
+        nav a:hover { color: #2ecc71; }
 
         /* 3개국어 언어 스위치 버튼 */
         .lang-switch { display: flex; gap: 5px; margin-left: 30px; }
         .lang-btn { background: #f1f3f5; border: 1px solid #dee2e6; padding: 5px 10px; font-size: 12px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: all 0.2s; }
         .lang-btn:hover { background: #e9ecef; }
-        .lang-btn.active { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+        .lang-btn.active { background: #2ecc71; color: #fff; border-color: #2ecc71; }
 
         /* 메인 비주얼 배경 영역 */
         .hero { 
@@ -31,23 +34,31 @@
         .hero h1 { font-size: 52px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
         .hero p { font-size: 22px; max-width: 800px; font-weight: 300; color: #f8f9fa; }
 
-        /* 공통 섹션 레이아웃 (정상 규격 독립 배치) */
+        /* 공통 섹션 레이아웃 (전체 가로폭 시원하게 복원) */
         section { padding: 90px 10%; text-align: center; width: 100%; clear: both; display: block; }
         section h2 { font-size: 34px; margin-bottom: 15px; color: #1a252f; font-weight: 700; }
         .section-desc { font-size: 16px; color: #777; margin-bottom: 60px; }
-        section h2::after { content: ''; display: block; width: 40px; height: 3px; background: #e74c3c; margin: 15px auto 0; }
+        section h2::after { content: ''; display: block; width: 40px; height: 3px; background: #2ecc71; margin: 15px auto 0; }
 
         /* 1. 회사 상세 소개 (About Us) */
         .about-container { display: flex; align-items: center; gap: 50px; text-align: left; width: 100%; }
         .about-text { flex: 1; }
         .about-text h3 { font-size: 24px; margin-bottom: 15px; color: #2c3e50; }
         .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; }
-        .parent-info { background: #f8f9fa; border-left: 4px solid #e74c3c; padding: 20px; margin-top: 30px; }
+        .parent-info { background: #f8f9fa; border-left: 4px solid #2ecc71; padding: 20px; margin-top: 30px; }
         
-        /* 유튜브 비디오 플레이어 컨테이너 */
-        .about-video-wrapper { flex: 1; height: 350px; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); position: relative; background: #000; cursor: pointer; }
-        .about-video-wrapper iframe { width: 100%; height: 100%; border: none; pointer-events: none; }
-        .video-overlay-hint { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.7); color: #fff; padding: 6px 12px; font-size: 12px; border-radius: 4px; font-weight: 500; pointer-events: none; display: flex; align-items: center; gap: 6px; transition: opacity 0.3s; }
+        /* 유튜브 플레이어 컨테이너 및 복원된 조감도 백그라운드 포스터 */
+        .about-video-wrapper { 
+            flex: 1; height: 350px; border-radius: 8px; overflow: hidden; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); position: relative; 
+            background: url('https://i.ibb.co/MxVVjdzy/factory-outline.jpg') no-repeat center center/cover; 
+            cursor: pointer; 
+        }
+        .about-video-wrapper iframe { width: 100%; height: 100%; border: none; opacity: 0; transition: opacity 0.5s ease; }
+        .about-video-wrapper.playing iframe { opacity: 1; }
+        .video-overlay-hint { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; transition: opacity 0.3s; z-index: 2; }
+        .video-overlay-hint span { background: rgba(0,0,0,0.7); padding: 10px 20px; border-radius: 4px; font-size: 14px; font-weight: 500; }
+        .about-video-wrapper.playing .video-overlay-hint { opacity: 0; pointer-events: none; }
 
         /* 2. 제품 포트폴리오 3열 그리드 */
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 100%; }
@@ -56,12 +67,11 @@
         .prod-slider-container { position: relative; height: 220px; width: 100%; overflow: hidden; background-color: #ddd; }
         .prod-slider-track { display: flex; height: 100%; width: 100%; transition: transform 0.4s ease-in-out; }
         
-        /* 제품 이미지 리사이징 공통 설정 */
         .prod-slider-slide { flex-shrink: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; }
         
         /* 슬라이더 제어 버튼 */
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.4); color: #fff; border: none; width: 34px; height: 34px; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; border-radius: 50%; z-index: 5; transition: background 0.3s; user-select: none; }
-        .slider-btn:hover { background: #e74c3c; }
+        .slider-btn:hover { background: #2ecc71; }
         .btn-prev { left: 10px; }
         .btn-next { right: 10px; }
         .prod-info { padding: 20px; }
@@ -71,7 +81,7 @@
         /* 3. 인프라 및 설비 (Infrastructure) */
         .infra-bg { background-color: #f9fbfd; }
         .infra-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 20px; width: 100%; }
-        .infra-custom-card { position: relative; border-radius: 8px; overflow: hidden; padding: 50px 35px; text-align: left; border-top: 3px solid #e74c3c; min-height: 260px; display: flex; flex-direction: column; justify-content: center; background-size: cover; background-position: center; background-repeat: no-repeat; transition: transform 0.3s, box-shadow 0.3s; z-index: 1; }
+        .infra-custom-card { position: relative; border-radius: 8px; overflow: hidden; padding: 50px 35px; text-align: left; border-top: 3px solid #2ecc71; min-height: 260px; display: flex; flex-direction: column; justify-content: center; background-size: cover; background-position: center; background-repeat: no-repeat; transition: transform 0.3s, box-shadow 0.3s; z-index: 1; }
         .infra-custom-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
         .infra-custom-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(44, 62, 80, 0.6); z-index: -1; }
         .infra-custom-card h4 { font-size: 22px; color: #fff; margin-bottom: 15px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
@@ -83,8 +93,8 @@
         .contact-info p { margin-bottom: 15px; font-size: 16px; }
         .contact-form { flex: 1; display: flex; flex-direction: column; gap: 15px; }
         .contact-form input, .contact-form select, .contact-form textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 100%; background-color: #fff; }
-        .contact-form button { background: #e74c3c; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; transition: background 0.3s; }
-        .contact-form button:hover { background: #c0392b; }
+        .contact-form button { background: #2ecc71; color: #fff; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; transition: background 0.3s; }
+        .contact-form button:hover { background: #27ae60; }
 
         /* 5. 파트너사 무한 끊김 없는 슬라이더 스타일 */
         .partners-section { background: #fff; padding: 80px 0; overflow: hidden; width: 100%; position: relative; clear: both; }
@@ -95,13 +105,12 @@
         .logo-track { display: flex; width: max-content; animation: infiniteScroll 35s linear infinite; }
         .slide { flex-shrink: 0; width: 240px; height: 70px; display: flex; justify-content: center; align-items: center; padding: 0 25px; }
         
-        /* 로고 그래픽 이미지 맞춤 비율 */
         .slide img { width: auto; height: auto; max-width: 170px; max-height: 60px; min-width: 140px; min-height: 45px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s ease; transform: scale(1.05); }
         .slide img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
         @keyframes infiniteScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* 푸터 영역 (완전 너비 확보) */
-        footer { background: #1a252f; color: #fff; padding: 50px 10%; font-size: 14px; border-top: 5px solid #e74c3c; position: relative; z-index: 10; width: 100%; clear: both; display: block; }
+        /* 푸터 영역 */
+        footer { background: #1a252f; color: #fff; padding: 50px 10%; font-size: 14px; border-top: 5px solid #2ecc71; position: relative; z-index: 10; width: 100%; clear: both; display: block; }
         .footer-cols { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
         .footer-col { flex: 1; min-width: 250px; }
         .footer-col h5 { font-size: 16px; margin-bottom: 15px; color: #f8f9fa; }
@@ -158,20 +167,20 @@
                 
                 <p class="ko">T.O.P Outdoor Vina는 베트남 현지 법인으로서 독보적인 봉제 기술력과 철저한 품질 관리를 바탕으로 글로벌 브랜드들의 혁신적인 아웃도어 캠핑 장비를 전문 생산하고 있습니다.</p>
                 <p class="en">T.O.P Outdoor Vina is a Vietnam-based enterprise specializing in manufacturing innovative outdoor camping gear for leading global brands, backed by unrivaled sewing expertise and strict quality assurance.</p>
-                <p class="vn">T.O.P Outdoor Vina là doanh nghiệp tại Việt Nam chuyên sản xuất thiết기 cắm trại dã ngoại sáng tạo cho các thương hiệu toàn cầu, dựa trên kỹ thuật may độc quyền và quy trình quản lý chất lượng nghiêm ngặt.</p>
+                <p class="vn">T.O.P Outdoor Vina là doanh nghiệp tại Việt Nam chuyên sản xuất thiết bị cắm trại dã ngoại sáng tạo cho các thương hiệu toàn cầu, dựa trên kỹ thuật may độc quyền và quy trình quản lý chất lượng nghiêm ngặt.</p>
                 
                 <div class="parent-info">
-                    <p class="ko"><strong>모회사 정보:</strong> 코스닥 상장사 주식회사 ES큐브 (www.escube.co.kr)의 탄탄한 자본력과 레저/아웃도어 기술 정체성을 공유하고 있습니다.</p>
+                    <p class="ko"><strong>모회사 정보:</strong> 코스닥 상장사 주식회사 ES큐브 (www.escube.co.kr)의 탄탄한 자본력และ 기술 정체성을 공유하고 있습니다.</p>
                     <p class="en"><strong>Parent Company:</strong> Sharing technical identity and strong financial stability with ESCUBE Co., Ltd. (www.escube.co.kr), listed on KOSDAQ.</p>
                     <p class="vn"><strong>Công ty mẹ:</strong> Kế thừa năng lực tài chính vững mạnh và bản sắc công nghệ dã ngoại từ ESCUBE Co., Ltd. (www.escube.co.kr), niêm yết trên sàn KOSDAQ.</p>
                 </div>
             </div>
             
-            <div class="about-video-wrapper" onclick="toggleVideoSound(this)">
-                <iframe id="player-iframe" src="https://www.youtube.com/embed/xbb4SDe-XvM?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=xbb4SDe-XvM&controls=0&showinfo=0&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="about-video-wrapper" id="video-container" onclick="playCompanyVideo()">
                 <div class="video-overlay-hint" id="video-hint">
-                    <span>🔊 Click to unmute (50% Vol)</span>
+                    <span>▶ 조감도 보기 / 영상 재생 (🔊 50% Vol)</span>
                 </div>
+                <iframe id="player-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -404,21 +413,20 @@
             track.style.transform = `translateX(-${currentIdx * 100}%)`;
         }
 
-        /* 3. 홍보 비디오 스마트 음량 컨트롤 */
-        let isMuted = true;
-        function toggleVideoSound(element) {
+        /* [비디오 로직 복원] 평소엔 조감도 포스터 노출 -> 클릭 시 50% 볼륨으로 온디맨드 로드/재생 */
+        function playCompanyVideo() {
+            const container = document.getElementById('video-container');
             const iframe = document.getElementById('player-iframe');
-            const hint = document.getElementById('video-hint');
             
-            if (isMuted) {
-                iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-                iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
-                hint.innerHTML = '<span>🔇 Click to mute</span>';
-                isMuted = false;
-            } else {
-                iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
-                hint.innerHTML = '<span>🔊 Click to unmute (50% Vol)</span>';
-                isMuted = true;
+            if (!container.classList.contains('playing')) {
+                // 클릭하는 순간 유튜브 스트리밍 소스를 소리(unmute) 및 50% 볼륨 플래그와 함께 동적 주입
+                iframe.src = "https://www.youtube.com/embed/xbb4SDe-XvM?autoplay=1&mute=0&controls=1&rel=0";
+                container.classList.add('playing');
+                
+                // 유튜브 플레이어 볼륨 조정을 위한 대기 API 전송
+                setTimeout(() => {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
+                }, 1000);
             }
         }
     </script>
