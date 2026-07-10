@@ -40,23 +40,40 @@
         .section-desc { font-size: 16px; color: #777; margin-bottom: 60px; }
         section h2::after { content: ''; display: block; width: 40px; height: 3px; background: #2ecc71; margin: 15px auto 0; }
 
-        /* 1. 회사 상세 소개 (About Us) - 레이아웃 및 클래스 정밀 교정 */
+        /* 1. 회사 상세 소개 (About Us) */
         .about-container { display: flex; align-items: center; gap: 50px; text-align: left; width: 100%; }
         .about-text { flex: 1; }
         .about-text h3 { font-size: 24px; margin-bottom: 15px; color: #2c3e50; }
         .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; }
         .parent-info { background: #f8f9fa; border-left: 4px solid #2ecc71; padding: 20px; margin-top: 30px; }
         
-        /* [교정] 클래스명을 about-img로 통일하고 가로폭 및 뼈대 강제 할당 */
-        .about-img { 
-            flex: 1; 
-            min-width: 45%;
-            height: 350px; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
-            position: relative; 
+        /* 공장 조감도 배경 포스터 및 세련된 영문 힌트 오버레이 지정 */
+        .about-video-wrapper { 
+            flex: 1; height: 350px; border-radius: 8px; overflow: hidden; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); position: relative; 
+            background: url('https://i.ibb.co/MxVVjdzy/factory-outline.jpg') no-repeat center center/cover; 
+            cursor: pointer; 
         }
+        .about-video-wrapper iframe { width: 100%; height: 100%; border: none; opacity: 0; transition: opacity 0.5s ease; }
+        .about-video-wrapper.playing iframe { opacity: 1; }
+        
+        /* 세련된 테두리 박스 영문 디자인 */
+        .video-overlay-hint { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.35); display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; color: #fff; 
+            transition: opacity 0.3s; z-index: 2; 
+        }
+        .video-overlay-hint span { 
+            background: rgba(0, 0, 0, 0.65); padding: 12px 26px; border-radius: 6px; 
+            font-size: 15px; font-weight: 500; font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.2s ease;
+        }
+        .about-video-wrapper:hover .video-overlay-hint span {
+            background: #2ecc71; border-color: #2ecc71; transform: scale(1.03);
+        }
+        .about-video-wrapper.playing .video-overlay-hint { opacity: 0; pointer-events: none; }
 
         /* 2. 제품 포트폴리오 3열 그리드 */
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 100%; }
@@ -120,7 +137,7 @@
         body.lang-vn .ko, body.lang-vn .en { display: none !important; }
 
         /* 반응형 디자인 */
-        @media (max-width: 992px) { .about-container, .contact-wrapper { flex-direction: column; } .about-img { height: 250px; width: 100%; min-width: 100%; } }
+        @media (max-width: 992px) { .about-container, .contact-wrapper { flex-direction: column; } .about-video-wrapper { height: 250px; width: 100%; } }
         @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } nav a { margin: 0 10px; } .hero h1 { font-size: 34px; } .hero p { font-size: 16px; } }
     </style>
 </head>
@@ -156,35 +173,35 @@
         <p class="section-desc en">Thank you to global partners who support and trust T.O.P Outdoor Vina.</p>
         <p class="section-desc vn">Xin chân thành cảm ơn các đối tác toàn cầu đã tin tưởng T.O.P Outdoor Vina.</p>
         
-        <div class="about-container">
-            <div class="about-text">
-                <h3 class="ko">최고의 아웃도어 텐트 제조 기술력</h3>
-                <h3 class="en">Top-tier Outdoor Tent Manufacturing Technology</h3>
-                <h3 class="vn">Công Nghệ Sản Xuất Lều Dã Ngoại Hàng Đầu</h3>
-                
-                <p class="ko">T.O.P Outdoor Vina는 베트남 현지 법인으로서 독보적인 봉제 기술력과 철저한 품질 관리를 바탕으로 글로벌 브랜드들의 혁신적인 아웃도어 캠핑 장비를 전문 생산하고 있습니다.</p>
-                <p class="en">T.O.P Outdoor Vina is a Vietnam-based enterprise specializing in manufacturing innovative outdoor camping gear for leading global brands, backed by unrivaled sewing expertise and strict quality assurance.</p>
-                <p class="vn">T.O.P Outdoor Vina là doanh nghiệp tại Việt Nam chuyên sản xuất thiết bị cắm trại dã ngoại sáng tạo cho các thương hiệu toàn cầu, dựa trên kỹ thuật may độc quyền và quy trình quản lý chất lượng nghiêm ngặt.</p>
-                
-                <div class="parent-info">
-                    <p class="ko"><strong>모회사 정보:</strong> 코스닥 상장사 주식회사 ES큐브 (www.escube.co.kr)의 탄탄한 자본력과 레저/아웃도어 기술 정체성을 공유하고 있습니다.</p>
-                    <p class="en"><strong>Parent Company:</strong> Sharing technical identity and strong financial stability with ESCUBE Co., Ltd. (www.escube.co.kr), listed on KOSDAQ.</p>
-                    <p class="vn"><strong>Công ty mẹ:</strong> Kế thừa năng lực tài chính vững mạnh 및 bản sắc công nghệ dã ngoại từ ESCUBE Co., Ltd. (www.escube.co.kr), niêm yết trên sàn KOSDAQ.</p>
+    <div class="about-container">
+        <div class="about-text">
+            <h3 class="ko">최고의 아웃도어 텐트 제조 기술력</h3>
+            <h3 class="en">Top-tier Outdoor Tent Manufacturing Technology</h3>
+            <h3 class="vn">Công Nghệ Sản Xuất Lều Dã Ngoại Hàng Đầu</h3>
+            
+            <p class="ko">T.O.P Outdoor Vina는 베트남 현지 법인으로서 독보적인 봉제 기술력과 철저한 품질 관리를 바탕으로 글로벌 브랜드들의 혁신적인 아웃도어 캠핑 장비를 전문 생산하고 있습니다.</p>
+            <p class="en">T.O.P Outdoor Vina is a Vietnam-based enterprise specializing in manufacturing innovative outdoor camping gear for leading global brands, backed by unrivaled sewing expertise and strict quality assurance.</p>
+            <p class="vn">T.O.P Outdoor Vina là doanh nghiệp tại Việt Nam chuyên sản xuất thiết bị cắm trại dã ngoại sáng tạo cho các thương hiệu toàn cầu, dựa trên kỹ thuật may độc quyền và quy trình quản lý chất lượng nghiêm ngặt.</p>
+            
+            <div class="parent-info">
+                <p class="ko"><strong>모회사 정보:</strong> 코스닥 상장사 주식회사 ES큐브 (www.escube.co.kr)의 탄탄한 자본력과 레저/아웃도어 기술 정체성을 공유하고 있습니다.</p>
+                <p class="en"><strong>Parent Company:</strong> Sharing technical identity and strong financial stability with ESCUBE Co., Ltd. (www.escube.co.kr), listed on KOSDAQ.</p>
+                <p class="vn"><strong>Công ty mẹ:</strong> Kế thừa năng lực tài chính vững mạnh và bản sắc công nghệ dã ngoại từ ESCUBE Co., Ltd. (www.escube.co.kr), niêm yết trên sàn KOSDAQ.</p>
+            </div>
+        </div>
+        
+        <div class="about-img" id="video-card-container" style="position: relative; cursor: pointer; height: 350px; background: url('https://i.ibb.co/MxVVjdzy/factory-outline.jpg') no-repeat center center/cover; border-radius: 8px; transition: all 0.4s ease; z-index: 5;">
+            <div id="video-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); display: flex; justify-content: center; align-items: center; border-radius: 8px; transition: all 0.3s ease; z-index: 3;">
+                <div style="padding: 12px 24px; border: 2px solid #fff; color: #fff; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; border-radius: 4px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    Click for introduction video
                 </div>
             </div>
-            
-            <div class="about-img" id="video-card-container" style="position: relative; cursor: pointer; height: 350px; background: url('https://i.ibb.co/MxVVjdzy/factory-outline.jpg') no-repeat center center/cover; border-radius: 8px; transition: all 0.4s ease; z-index: 5;">
-                <div id="video-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); display: flex; justify-content: center; align-items: center; border-radius: 8px; transition: all 0.3s ease; z-index: 3;">
-                    <div style="padding: 12px 24px; border: 2px solid #fff; color: #fff; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; border-radius: 4px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-                        Click for introduction video
-                    </div>
-                </div>
-            
-                <div id="iframe-wrapper" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; transition: all 0.4s ease; z-index: 2;">
-                    <iframe id="intro-video" width="100%" height="100%" src="https://www.youtube.com/embed/xbb4SDe-XvM?enablejsapi=1&mute=1&controls=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px;"></iframe>
-                </div>
+        
+            <div id="iframe-wrapper" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; transition: all 0.4s ease; z-index: 2;">
+                <iframe id="intro-video" width="100%" height="100%" src="https://www.youtube.com/embed/xbb4SDe-XvM?enablejsapi=1&mute=1&controls=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px;"></iframe>
             </div>
-        </div> <div id="video-theater-dim" onclick="closeTheaterVideo()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; z-index: 9998;"></div>
+        </div>
+    </div> <div id="video-theater-dim" onclick="closeTheaterVideo()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; z-index: 9998;"></div>
     </section>
 
     <section id="products">
@@ -410,7 +427,21 @@
             track.style.transform = `translateX(-${currentIdx * 100}%)`;
         }
 
-        /* 3. [유튜브 극장 모드 연동] 스마트 오버레이 모달 스크립트 */
+        /* 3. [비디오 로직 동기화] 세련된 영문 오버레이 노출 -> 클릭 시 50% 볼륨 영구 로드 재생 */
+        function playCompanyVideo() {
+            const container = document.getElementById('video-container');
+            const iframe = document.getElementById('player-iframe');
+            
+            if (!container.classList.contains('playing')) {
+                iframe.src = "https://www.youtube.com/embed/xbb4SDe-XvM?autoplay=1&mute=0&controls=1&rel=0";
+                container.classList.add('playing');
+                
+                setTimeout(() => {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[50]}', '*');
+                }, 1000);
+            }
+        }
+        // 유튜브 API 준비 완료 세팅 (볼륨 제어용)
         var ytPlayer;
         function onYouTubeIframeAPIReady() {
           ytPlayer = new YT.Player('intro-video', {
@@ -419,7 +450,7 @@
             }
           });
         }
-        
+        // 유튜브 API 스크립트 강제 로드
         if (!window['YT']) {
           var tag = document.createElement('script');
           tag.src = "https://www.youtube.com/iframe_api";
@@ -428,11 +459,12 @@
         }
         
         function onPlayerReady(event) {
-          // 플레이어 세팅 완료
+          // 플레이어 로드 완료 대기
         }
         
-        // 1. 영상 클릭 시: 빨간 박스 스펙(레이아웃) 크기로 중앙 배치 및 50% 사운드 재생
+        // 1. 영상 클릭 시: 빨간 박스(레이아웃 유지) 내에서 줌인 및 음영 대비 극장모드 켜기
         document.getElementById('video-card-container').addEventListener('click', function(e) {
+          // 이미 영상이 커진 상태에서 내부 클릭 시 중복 작동 방지
           if(this.classList.contains('theater-active')) return;
           
           var container = this;
@@ -443,29 +475,33 @@
         
           container.classList.add('theater-active');
           
-          // 모달 모드 강제 스타일 변환
+          // 극장 모드 전용 고정 레이아웃 스타일 동적 주입
           container.style.position = 'fixed';
           container.style.top = '50%';
           container.style.left = '50%';
-          container.style.transform = 'translate(-50%, -50%) scale(1.3)'; 
-          container.style.width = '700px';  
-          container.style.height = '394px'; 
+          container.style.transform = 'translate(-50%, -50%) scale(1.3)'; // 기존 자리에서 약 1.3배 부드럽게 줌인
+          container.style.width = '700px';  // 바이어가 보기 좋은 최적의 빨간 박스 확장 폭
+          container.style.height = '394px'; // 16:9 황금 비율 유지
           container.style.zIndex = '9999';
           container.style.boxShadow = '0 20px 40px rgba(0,0,0,0.5)';
           
+          // 힌트 가림막 숨기고 비디오 트랙 활성화
           overlay.style.opacity = '0';
           overlay.style.pointerEvents = 'none';
           wrapper.style.opacity = '1';
           wrapper.style.pointerEvents = 'auto';
           
+          // 주변 음영 대비 80% 어둡게 켜기
           dim.style.opacity = '1';
           dim.style.pointerEvents = 'auto';
         
+          // 유튜브 비디오 재생 및 볼륨 정확히 50% 세팅
           if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
             ytPlayer.unMute();
-            ytPlayer.setVolume(50); 
+            ytPlayer.setVolume(50); // 시스템 기준 정확히 50% 사운드 규격 매칭
             ytPlayer.playVideo();
           } else {
+            // API 미동작 시 백업용 src 강제 변경 제어
             var currentSrc = iframe.src;
             if(currentSrc.indexOf('autoplay=1') === -1){
               iframe.src = currentSrc.replace("mute=1", "mute=0") + "&autoplay=1";
@@ -473,7 +509,7 @@
           }
         });
         
-        // 2. 바깥 배경 클릭 시: 영상 일시정지 및 조감도 선노출 복원
+        // 2. 바깥 음영 영역 클릭 시: 원상복구 및 자동 정지, 조감도 선노출 복원
         function closeTheaterVideo() {
           var container = document.getElementById('video-card-container');
           var overlay = document.getElementById('video-overlay');
@@ -482,7 +518,7 @@
           
           container.classList.remove('theater-active');
           
-          // 순정 기본 스타일로 롤백
+          // 원래 순정 레이아웃 상태 스타일로 원상 복구
           container.style.position = 'relative';
           container.style.top = '0';
           container.style.left = '0';
@@ -492,14 +528,17 @@
           container.style.zIndex = '5';
           container.style.boxShadow = 'none';
           
+          // 오버레이 및 힌트 복원 (조감도 사진이 다시 보이도록 리셋)
           overlay.style.opacity = '1';
           overlay.style.pointerEvents = 'auto';
           wrapper.style.opacity = '0';
           wrapper.style.pointerEvents = 'none';
           
+          // 음영 가림막 끄기
           dim.style.opacity = '0';
           dim.style.pointerEvents = 'none';
           
+          // 영상 즉시 일시정지(또는 정지) 제어
           if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
             ytPlayer.pauseVideo();
           } else {
