@@ -444,6 +444,112 @@
                 }, 1000);
             }
         }
+        // 유튜브 API 준비 완료 세팅 (볼륨 제어용)
+        var ytPlayer;
+        function onYouTubeIframeAPIReady() {
+          ytPlayer = new YT.Player('intro-video', {
+            events: {
+              'onReady': onPlayerReady
+            }
+          });
+        }
+        // 유튜브 API 스크립트 강제 로드
+        if (!window['YT']) {
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/iframe_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+        
+        function onPlayerReady(event) {
+          // 플레이어 로드 완료 대기
+        }
+        
+        // 1. 영상 클릭 시: 빨간 박스(레이아웃 유지) 내에서 줌인 및 음영 대비 극장모드 켜기
+        document.getElementById('video-card-container').addEventListener('click', function(e) {
+          // 이미 영상이 커진 상태에서 내부 클릭 시 중복 작동 방지
+          if(this.classList.contains('theater-active')) return;
+          
+          var container = this;
+          var overlay = document.getElementById('video-overlay');
+          var wrapper = document.getElementById('iframe-wrapper');
+          var dim = document.getElementById('video-theater-dim');
+          var iframe = document.getElementById('intro-video');
+        
+          container.classList.add('theater-active');
+          
+          // 극장 모드 전용 고정 레이아웃 스타일 동적 주입
+          container.style.position = 'fixed';
+          container.style.top = '50%';
+          container.style.left = '50%';
+          container.style.transform = 'translate(-50%, -50%) scale(1.3)'; // 기존 자리에서 약 1.3배 부드럽게 줌인
+          container.style.width = '700px';  // 바이어가 보기 좋은 최적의 빨간 박스 확장 폭
+          container.style.height = '394px'; // 16:9 황금 비율 유지
+          container.style.zIndex = '9999';
+          container.style.boxShadow = '0 20px 40px rgba(0,0,0,0.5)';
+          
+          // 힌트 가림막 숨기고 비디오 트랙 활성화
+          overlay.style.opacity = '0';
+          overlay.style.pointerEvents = 'none';
+          wrapper.style.opacity = '1';
+          wrapper.style.pointerEvents = 'auto';
+          
+          // 주변 음영 대비 80% 어둡게 켜기
+          dim.style.opacity = '1';
+          dim.style.pointerEvents = 'auto';
+        
+          // 유튜브 비디오 재생 및 볼륨 정확히 50% 세팅
+          if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+            ytPlayer.unMute();
+            ytPlayer.setVolume(50); // 시스템 기준 정확히 50% 사운드 규격 매칭
+            ytPlayer.playVideo();
+          } else {
+            // API 미동작 시 백업용 src 강제 변경 제어
+            var currentSrc = iframe.src;
+            if(currentSrc.indexOf('autoplay=1') === -1){
+              iframe.src = currentSrc.replace("mute=1", "mute=0") + "&autoplay=1";
+            }
+          }
+        });
+        
+        // 2. 바깥 음영 영역 클릭 시: 원상복구 및 자동 정지, 조감도 선노출 복원
+        function closeTheaterVideo() {
+          var container = document.getElementById('video-card-container');
+          var overlay = document.getElementById('video-overlay');
+          var wrapper = document.getElementById('iframe-wrapper');
+          var dim = document.getElementById('video-theater-dim');
+          
+          container.classList.remove('theater-active');
+          
+          // 원래 순정 레이아웃 상태 스타일로 원상 복구
+          container.style.position = 'relative';
+          container.style.top = '0';
+          container.style.left = '0';
+          container.style.transform = 'none';
+          container.style.width = '100%';
+          container.style.height = '350px';
+          container.style.zIndex = '5';
+          container.style.boxShadow = 'none';
+          
+          // 오버레이 및 힌트 복원 (조감도 사진이 다시 보이도록 리셋)
+          overlay.style.opacity = '1';
+          overlay.style.pointerEvents = 'auto';
+          wrapper.style.opacity = '0';
+          wrapper.style.pointerEvents = 'none';
+          
+          // 음영 가림막 끄기
+          dim.style.opacity = '0';
+          dim.style.pointerEvents = 'none';
+          
+          // 영상 즉시 일시정지(또는 정지) 제어
+          if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+            ytPlayer.pauseVideo();
+          } else {
+            var iframe = document.getElementById('intro-video');
+            var currentSrc = iframe.src;
+            iframe.src = currentSrc.replace("&autoplay=1", "").replace("mute=0", "mute=1");
+          }
+        }
     </script>
 </body>
 </html>
