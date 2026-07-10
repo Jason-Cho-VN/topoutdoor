@@ -12,7 +12,9 @@
 
         /* 헤더 & 네비게이션 */
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; width: 100%; }
-        .logo { font-size: 22px; font-weight: 800; color: #1a252f; letter-spacing: -0.5px; }
+        
+        /* [교정] 로고 영역에 마우스 포인터 스타일 적용 및 링크 컬러 초기화 유지 */
+        .logo { font-size: 22px; font-weight: 800; color: #1a252f; letter-spacing: -0.5px; cursor: pointer; }
         
         /* [CI 초록색 고정] Vina 문구를 브랜드 고유의 초록색 테마로 완벽 지정 */
         .logo span { color: #2ecc71; }
@@ -127,7 +129,7 @@
 <body class="lang-ko">
 
     <header>
-        <div class="logo">T.O.P <span>Outdoor Vina</span></div>
+        <a href="#" class="logo">T.O.P <span>Outdoor Vina</span></a>
         <nav>
             <a href="#about"><span class="ko">회사소개</span><span class="en">About Us</span><span class="vn">Giới thiệu</span></a>
             <a href="#products"><span class="ko">제품소개</span><span class="en">Products</span><span class="vn">Sản phẩm</span></a>
@@ -164,7 +166,7 @@
                 
                 <p class="ko">T.O.P Outdoor Vina는 베트남 현지 법인으로서 독보적인 봉제 기술력과 철저한 품질 관리를 바탕으로 글로벌 브랜드들의 혁신적인 아웃도어 캠핑 장비를 전문 생산하고 있습니다.</p>
                 <p class="en">T.O.P Outdoor Vina is a Vietnam-based enterprise specializing in manufacturing innovative outdoor camping gear for leading global brands, backed by unrivaled sewing expertise and strict quality assurance.</p>
-                <p class="vn">T.O.P Outdoor Vina là doanh nghiệp tại Việt Nam chuyên sản xuất thiết bị cắm trại dã ngoại sáng tạo cho các thương hiệu toàn cầu, dựa trên kỹ thuật may độc quyền và quy trình quản lý chất lượng nghiêm ngặt.</p>
+                <p class="vn">T.O.P Outdoor Vina là doanh nghiệp tại Việt Nam chuyên sản xuất thiết bị cắm trại dã ngoại sáng tạo cho các thương hiệu toàn cầu, dựa trên kỹ thuật may độc quyền 및 quy trình quản lý chất lượng nghiêm ngặt.</p>
                 
                 <div class="parent-info">
                     <p class="ko"><strong>모회사 정보:</strong> 코스닥 상장사 주식회사 ES큐브 (www.escube.co.kr)의 탄탄한 자본력과 레저/아웃도어 기술 정체성을 공유하고 있습니다.</p>
@@ -184,7 +186,8 @@
                     <iframe id="intro-video" width="100%" height="100%" src="https://www.youtube.com/embed/xbb4SDe-XvM?enablejsapi=1&mute=1&controls=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px;"></iframe>
                 </div>
             </div>
-        </div> <div id="video-theater-dim" onclick="closeTheaterVideo()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; z-index: 9998;"></div>
+        </div> 
+        <div id="video-theater-dim" onclick="closeTheaterVideo()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; z-index: 9998;"></div>
     </section>
 
     <section id="products">
@@ -211,7 +214,7 @@
                     <h4 class="ko">가족용 캠핑 텐트</h4><h4 class="en">Family Camping Tents</h4><h4 class="vn">Lều cắm trại gia đình</h4>
                     <p class="ko">거실형 리빙쉘 및 대형 돔 구조를 기반으로 거주성과 쾌적한 공간감을 극대화한 오토캠핑 맞춤형 라인업입니다.</p>
                     <p class="en">Premium auto-camping lineup maximizing living space, comfort, and durability with spacious dome structures.</p>
-                    <p class="vn">Dòng sản phẩm cao cấp tối ưu không gian sống, mang lại sự thoải mái và độ bền vượt trội.</p>
+                    <p class="vn">Dòng sản phẩm cao cấp tối ưu không gian sống, mang lại sự thoải mái 및 độ bền vượt trội.</p>
                 </div>
             </div>
 
