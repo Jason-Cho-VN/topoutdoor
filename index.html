@@ -56,6 +56,11 @@
         .about-text { flex: 1; }
         .about-text h3 { font-size: 24px; margin-bottom: 15px; color: #2c3e50; }
         .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; }
+        
+        /* ISO 인증 뱃지 스타일 */
+        .iso-cert-box { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .iso-tag { display: inline-flex; align-items: center; gap: 8px; background: #eafaf1; border: 1px solid #2ecc71; color: #1e8449; padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 700; }
+        .iso-tag span.badge-title { background: #2ecc71; color: #fff; padding: 2px 7px; border-radius: 4px; font-size: 12px; }
         .parent-info { background: #f8f9fa; border-left: 4px solid #2ecc71; padding: 20px; margin-top: 30px; }
         
         /* 공장 조감도 배경 및 비디오 영역 스타일 지정 */
@@ -187,7 +192,7 @@
         <p class="section-desc vn">Xin chân thành cảm ơn các đối tác toàn cầu đã tin tưởng T.O.P Outdoor Vina.</p>
         
         <div class="about-container">
-            <div class="about-text">
+           <div class="about-text">
                 <h3 class="ko">최고의 아웃도어 텐트 제조 기술력</h3>
                 <h3 class="en">Top-tier Outdoor Tent Manufacturing Technology</h3>
                 <h3 class="vn">Công Nghệ Sản Xuất Lều Dã Ngoại Hàng Đầu</h3>
@@ -196,11 +201,27 @@
                 <p class="en">T.O.P Outdoor Vina is a Vietnam-based enterprise specializing in manufacturing innovative outdoor camping gear for leading global brands, backed by unrivaled sewing expertise and strict quality assurance.</p>
                 <p class="vn">T.O.P Outdoor Vina là doanh nghiệp tại Việt Nam chuyên sản xuất thiết bị cắm trại dã ngoại sáng tạo cho các thương hiệu toàn cầu, dựa trên kỹ thuật may độc quyền và quy trình quản lý chất lượng nghiêm ngặt.</p>
                 
+                <div class="iso-cert-box">
+                    <div class="iso-tag">
+                        <span class="badge-title">ISO 9001</span>
+                        <span class="ko">품질경영시스템 인증</span>
+                        <span class="en">Quality Management System</span>
+                        <span class="vn">Hệ thống Quản lý Chất lượng</span>
+                    </div>
+                    <div class="iso-tag">
+                        <span class="badge-title">ISO 14001</span>
+                        <span class="ko">환경경영시스템 인증</span>
+                        <span class="en">Environmental Management System</span>
+                        <span class="vn">Hệ thống Quản lý Môi trường</span>
+                    </div>
+                </div>
+
                 <div class="parent-info">
                     <p class="ko"><strong>모회사 정보:</strong> 코스닥 상장사 주식회사 ES큐브 (www.escube.co.kr)의 탄탄한 자본력과 레저/아웃도어 기술 정체성을 공유하고 있습니다.</p>
                     <p class="en"><strong>Parent Company:</strong> Sharing technical identity and strong financial stability with ESCUBE Co., Ltd. (www.escube.co.kr), listed on KOSDAQ.</p>
                     <p class="vn"><strong>Công ty mẹ:</strong> Kế thừa năng lực tài chính vững mạnh và bản sắc công nghệ dã ngoại từ ESCUBE Co., Ltd. (www.escube.co.kr), niêm yết trên sàn KOSDAQ.</p>
                 </div>
+            </div>
             </div>
             
             <div class="about-img" id="video-card-container">
